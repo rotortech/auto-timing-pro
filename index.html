@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Timing Pro</title>
+    <meta name="description" content="Professional timing belt/chain diagnostic tool for mobile mechanics">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkF1dG8gVGltaW5nIFBybyIsCiAgInNob3J0X25hbWUiOiAiVGltaW5nUHJvIiwKICAiZGVzY3JpcHRpb24iOiAiUHJvZmVzc2lvbmFsIHRpbWluZyBiZWx0L2NoYWluIGRpYWdub3N0aWMgdG9vbCIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzY2N2VlYSIsCiAgInRoZW1lX2NvbG9yIjogIiM2NjdlZWEiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSnpOakVpSUdobGFXZG9kRDBpTlRZeElpQjJhV1YzUW05NFBTSXdJREFnTlRZeElEVTJNU0krUEhKbFkzUWdkMmxrZEdnOUlqVTJNU0lnYUdWcFoyaDBQU0kxTmpFaUlHWnBiR3c5SWlOalpqY3lNakZpSWlCeWVEMGlNamtpTHo0OFkybHlZMnhsSUdONFBTSXlPREVpSUdONVBTSXlPREVpSUhJOUlqRTNOU0lnWm1sc2JEMGlJelkwTjJWbFlTSXZQanh3WVhSb0lHUTlJazAwTlRJZ01qQXdiREkwT0NJek16a3RNaTQySURjZ09EWWdNVFl0TVRZM0lEUXdNU3d0ZkRFMUlEWXVOaUJOTVRRMElEZ3lJREV4TjBzeE56cDBNVE54SWpCYUluTjJaeTA0STJKMFFnMHJJaTVzYnk1a1pYY3ZiWFdRZWdSMlp5QXVjemdCbW9OTkdkWFZYa2lJR1pwYkd3OUlpTm1NU2VrOFpHUWlMejQ4YzNabksiLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+    
+    <!-- Apple PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Auto Timing Pro">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+            margin: 0;
+            padding-top: max(10px, env(safe-area-inset-top));
+            padding-bottom: max(10px, env(safe-area-inset-bottom));
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: calc(100vh - 20px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            padding-top: max(20px, env(safe-area-inset-top));
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1em;
+        }
+
+        .form-section {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            -webkit-appearance: none;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        .search-btn:hover, .search-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .search-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .install-prompt {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .install-btn {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .offline-indicator {
+            background: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .vehicle-info {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .result-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #667eea;
+        }
+
+        .result-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .result-value {
+            font-size: 1.1em;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .timing-belt { 
+            background: #ffebee; 
+            color: #c62828; 
+            border-left-color: #e74c3c !important;
+        }
+        
+        .timing-chain { 
+            background: #e8f5e8; 
+            color: #2e7d32; 
+            border-left-color: #27ae60 !important;
+        }
+        
+        .interference { 
+            background: #fff3e0; 
+            color: #ef6c00; 
+            border-left-color: #f39c12 !important;
+        }
+        
+        .non-interference { 
+            background: #e3f2fd; 
+            color: #1565c0; 
+            border-left-color: #3498db !important;
+        }
+
+        .warning {
+            background: #ffebee;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .warning .result-value {
+            background: #ffcdd2;
+            color: #c62828;
+            font-weight: 600;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+            
+            .header {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.6em;
+            }
+            
+            .header p {
+                font-size: 0.9em;
+            }
+            
+            .form-section {
+                padding: 15px;
+            }
+            
+            .form-group {
+                margin-bottom: 15px;
+            }
+            
+            input, select {
+                padding: 16px;
+                font-size: 16px;
+            }
+            
+            .search-btn {
+                padding: 18px;
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            .header {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.4em;
+                margin-bottom: 5px;
+            }
+            
+            .header p {
+                display: none;
+            }
+            
+            .form-section {
+                padding: 10px;
+            }
+            
+            .form-group {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="offlineIndicator" class="offline-indicator">
+            📶 Offline Mode - Using cached data
+        </div>
+        
+        <div class="header">
+            <h1>🔧 Auto Timing Pro</h1>
+            <p>Professional timing diagnostics for mobile mechanics</p>
+        </div>
+        
+        <div class="form-section">
+            <div id="installPrompt" class="install-prompt">
+                <div>📱 Install Auto Timing Pro on your home screen for quick access!</div>
+                <button id="installBtn" class="install-btn">Install App</button>
+            </div>
+
+            <div class="form-group">
+                <label for="year">Year:</label>
+                <input type="number" id="year" min="1980" max="2025" placeholder="e.g., 2020">
+            </div>
+            
+            <div class="form-group">
+                <label for="make">Make:</label>
+                <input type="text" id="make" placeholder="e.g., Toyota, Honda, Ford">
+            </div>
+            
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <input type="text" id="model" placeholder="e.g., Camry, Accord, F-150">
+            </div>
+            
+            <div class="form-group" id="engineGroup" style="display: none;">
+                <label for="engine">Engine:</label>
+                <select id="engine">
+                    <option value="">Select Engine...</option>
+                </select>
+            </div>
+            
+            <button class="search-btn" onclick="searchTiming()">
+                🔍 Get Timing Information
+            </button>
+            
+            <div id="results" class="results">
+                <div id="loading" class="loading" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Searching automotive databases...</p>
+                </div>
+                
+                <div id="content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // PWA variables
+        let deferredPrompt;
+        
+        // PWA Install Prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installPrompt').style.display = 'block';
+        });
+
+        document.getElementById('installBtn').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    document.getElementById('installPrompt').style.display = 'none';
+                }
+                deferredPrompt = null;
+            }
+        });
+
+        window.addEventListener('appinstalled', () => {
+            document.getElementById('installPrompt').style.display = 'none';
+        });
+
+        // Offline/Online Status
+        function updateOnlineStatus() {
+            const indicator = document.getElementById('offlineIndicator');
+            if (navigator.onLine) {
+                indicator.style.display = 'none';
+            } else {
+                indicator.style.display = 'block';
+            }
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+
+        // Engine database
+        const engineDatabase = {
+            'HONDA_ACCORD': {
+                '1998-2002': [
+                    { code: 'F23A1', description: '2.3L 4-Cylinder VTEC (F23A1)' },
+                    { code: 'J30A1', description: '3.0L V6 VTEC (J30A1)' }
+                ],
+                '2003-2007': [
+                    { code: 'K24A4', description: '2.4L 4-Cylinder i-VTEC (K24A4)' },
+                    { code: 'J30A5', description: '3.0L V6 VTEC (J30A5)' }
+                ],
+                '2008-2012': [
+                    { code: 'K24Z3', description: '2.4L 4-Cylinder i-VTEC (K24Z3)' },
+                    { code: 'J35Z2', description: '3.5L V6 VTEC (J35Z2)' }
+                ]
+            },
+            'HONDA_CIVIC': {
+                '2001-2005': [
+                    { code: 'D17A1', description: '1.7L 4-Cylinder VTEC (D17A1)' },
+                    { code: 'D17A2', description: '1.7L 4-Cylinder VTEC-E (D17A2)' }
+                ],
+                '2006-2011': [
+                    { code: 'R18A1', description: '1.8L 4-Cylinder i-VTEC (R18A1)' },
+                    { code: 'K20Z3', description: '2.0L 4-Cylinder i-VTEC (K20Z3) - Si' }
+                ]
+            },
+            'TOYOTA_CAMRY': {
+                '1997-2001': [
+                    { code: '5SFE', description: '2.2L 4-Cylinder (5S-FE)' },
+                    { code: '1MZFE', description: '3.0L V6 (1MZ-FE)' }
+                ],
+                '2002-2006': [
+                    { code: '2AZFE', description: '2.4L 4-Cylinder (2AZ-FE)' },
+                    { code: '1MZFE', description: '3.0L V6 (1MZ-FE)' }
+                ],
+                '2007-2011': [
+                    { code: '2AZFE', description: '2.4L 4-Cylinder (2AZ-FE)' },
+                    { code: '2GRFE', description: '3.5L V6 (2GR-FE)' }
+                ]
+            },
+            'SUBARU_OUTBACK': {
+                '2000-2004': [
+                    { code: 'EJ251', description: '2.5L 4-Cylinder SOHC (EJ251)' },
+                    { code: 'EJ254', description: '2.5L 4-Cylinder Turbo (EJ254)' }
+                ],
+                '2005-2009': [
+                    { code: 'EJ253', description: '2.5L 4-Cylinder SOHC (EJ253)' },
+                    { code: 'EJ255', description: '2.5L 4-Cylinder Turbo (EJ255)' }
+                ],
+                '2010-2014': [
+                    { code: 'FB25', description: '2.5L 4-Cylinder DOHC (FB25)' }
+                ]
+            },
+            'FORD_F150': {
+                '2004-2010': [
+                    { code: '4.6L_2V', description: '4.6L V8 2-Valve (Triton)' },
+                    { code: '5.4L_3V', description: '5.4L V8 3-Valve (Triton)' }
+                ],
+                '2011-2016': [
+                    { code: '3.7L_V6', description: '3.7L V6 (Cyclone)' },
+                    { code: '5.0L_V8', description: '5.0L V8 (Coyote)' },
+                    { code: '3.5L_EB', description: '3.5L V6 EcoBoost' }
+                ]
+            },
+            'NISSAN_ALTIMA': {
+                '2002-2018': [
+                    { code: 'QR25DE', description: '2.5L 4-Cylinder DOHC (QR25DE)' },
+                    { code: 'VQ35DE', description: '3.5L V6 DOHC (VQ35DE)' }
+                ]
+            }
+        };
+
+        // Engine timing data
+        const engineData = {
+            'F23A1': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.3L VTEC engine uses timing belt. Critical service!' },
+            'J30A1': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '3.0L V6 VTEC engine uses timing belt. Interference design.' },
+            'K24A4': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '2.4L i-VTEC switched to timing chain in 2003.' },
+            'J30A5': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '3.0L V6 continued with timing belt through 2007.' },
+            'K24Z3': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '2.4L i-VTEC with timing chain and VTC system.' },
+            'J35Z2': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '3.5L V6 VTEC - last Honda V6 with timing belt.' },
+            'D17A1': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '1.7L VTEC engine. All D-series are interference.' },
+            'R18A1': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '1.8L i-VTEC switched to timing chain in 2006.' },
+            '5SFE': { timing: 'Timing Belt', interference: false, interval: '90,000 miles or 6 years', notes: '2.2L 5S-FE is non-interference. Replace belt on schedule.' },
+            '1MZFE': { timing: 'Timing Belt', interference: true, interval: '90,000 miles or 6 years', notes: '3.0L 1MZ-FE V6 is interference. Critical timing belt service!' },
+            '2AZFE': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '2.4L 2AZ-FE switched to timing chain in 2002.' },
+            '2GRFE': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '3.5L 2GR-FE V6 uses timing chain.' },
+            'EJ251': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.5L SOHC boxer engine. ALL Subaru engines are interference!' },
+            'EJ254': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.5L Turbo boxer engine. Critical timing belt service!' },
+            'EJ253': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.5L SOHC boxer engine. Interference design.' },
+            'EJ255': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.5L Turbo boxer engine with timing belt.' },
+            'FB25': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '2.5L FB engine finally switched to timing chain in 2010.' },
+            '4.6L_2V': { timing: 'Timing Chain', interference: false, interval: 'Lifetime service', notes: '4.6L Triton V8 2-valve. Non-interference with timing chain.' },
+            '5.4L_3V': { timing: 'Timing Chain', interference: false, interval: 'Lifetime service', notes: '5.4L Triton V8 3-valve. Known for chain stretch issues.' },
+            '5.0L_V8': { timing: 'Timing Chain', interference: false, interval: 'Lifetime service', notes: '5.0L Coyote V8. Modern chain-driven engine.' },
+            '3.5L_EB': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '3.5L EcoBoost V6. Twin-turbo interference engine.' },
+            'QR25DE': { timing: 'Timing Chain', interference: true, interval: 'Inspect at 120,000 miles', notes: 'QR25DE notorious for timing chain stretch. Monitor noise!' },
+            'VQ35DE': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: 'VQ35DE V6 uses timing chain. Generally reliable.' }
+        };
+
+        function updateEngineOptions() {
+            const year = document.getElementById('year').value;
+            const make = document.getElementById('make').value.trim();
+            const model = document.getElementById('model').value.trim();
+            const engineGroup = document.getElementById('engineGroup');
+            const engineSelect = document.getElementById('engine');
+            
+            if (!year || !make || !model) {
+                engineGroup.style.display = 'none';
+                return;
+            }
+            
+            const engines = getEngineOptions(year, make, model);
+            
+            if (engines.length > 0) {
+                engineSelect.innerHTML = '<option value="">Select Engine...</option>';
+                engines.forEach(engine => {
+                    engineSelect.innerHTML += `<option value="${engine.code}">${engine.description}</option>`;
+                });
+                engineGroup.style.display = 'block';
+            } else {
+                engineGroup.style.display = 'none';
+            }
+        }
+
+        function getEngineOptions(year, make, model) {
+            const makeUpper = make.toUpperCase();
+            const modelUpper = model.toUpperCase();
+            const yearNum = parseInt(year);
+            
+            const key = `${makeUpper}_${modelUpper}`;
+            const vehicleEngines = engineDatabase[key];
+            
+            if (!vehicleEngines) {
+                return [];
+            }
+            
+            for (const yearRange in vehicleEngines) {
+                const [startYear, endYear] = yearRange.split('-').map(y => parseInt(y));
+                if (yearNum >= startYear && yearNum <= endYear) {
+                    return vehicleEngines[yearRange];
+                }
+            }
+            
+            return [];
+        }
+
+        function searchTiming() {
+            const year = document.getElementById('year').value;
+            const make = document.getElementById('make').value.trim();
+            const model = document.getElementById('model').value.trim();
+            const engine = document.getElementById('engine').value;
+            
+            if (!year || !make || !model) {
+                alert('Please fill in Year, Make, and Model');
+                return;
+            }
+            
+            if (!engine) {
+                alert('Please select an engine option');
+                return;
+            }
+            
+            const results = document.getElementById('results');
+            const loading = document.getElementById('loading');
+            const content = document.getElementById('content');
+            
+            results.classList.add('show');
+            loading.style.display = 'block';
+            content.innerHTML = '';
+            
+            setTimeout(() => {
+                loading.style.display = 'none';
+                showResults(year, make, model, engine);
+            }, 1500);
+        }
+
+        function showResults(year, make, model, engineCode) {
+            const content = document.getElementById('content');
+            const data = getVehicleData(engineCode);
+            
+            const engineSelect = document.getElementById('engine');
+            const selectedOption = engineSelect.options[engineSelect.selectedIndex];
+            const engineDesc = selectedOption ? selectedOption.text : engineCode;
+
+            let warningHtml = '';
+            if (data.warning) {
+                warningHtml = `
+                    <div class="warning">
+                        <div class="result-title">⚠️ Critical Warning</div>
+                        <div class="result-value">${data.warning}</div>
+                    </div>
+                `;
+            }
+            
+            content.innerHTML = `
+                <div class="vehicle-info">
+                    🚗 ${year} ${make} ${model}<br>
+                    <span style="font-size: 0.9em; opacity: 0.9;">Engine: ${engineDesc}</span>
+                </div>
+                
+                ${warningHtml}
+                
+                <div class="result-item ${data.timingClass}">
+                    <div class="result-title">⚙️ Timing System</div>
+                    <div class="result-value ${data.timingClass}">${data.timing}</div>
+                </div>
+                
+                <div class="result-item ${data.engineClass}">
+                    <div class="result-title">🔧 Engine Type</div>
+                    <div class="result-value ${data.engineClass}">${data.engine}</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">📅 Service Interval</div>
+                    <div class="result-value" style="background: #fff3e0; color: #ef6c00; font-weight: 600;">
+                        ${data.interval}
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">📝 Service Notes</div>
+                    <div class="result-value" style="background: #f8f9fa; color: #495057;">
+                        ${data.notes}
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">🎯 Data Confidence</div>
+                    <div class="result-value" style="background: ${data.confidence === 'High' ? '#e8f5e8' : '#fff3e0'}; color: ${data.confidence === 'High' ? '#2e7d32' : '#ef6c00'};">
+                        ${data.confidence}
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">ℹ️ Important</div>
+                    <div class="result-value" style="background: #e3f2fd; color: #1565c0;">
+                        Always verify with manufacturer specifications and service manuals for critical repair decisions.
+                    </div>
+                </div>
+            `;
+        }
+
+        function getVehicleData(engineCode) {
+            const engine = engineData[engineCode];
+            
+            if (!engine) {
+                return {
+                    timing: 'Unknown',
+                    engine: 'Unknown',
+                    interval: 'Verify with service manual',
+                    notes: 'Engine-specific data not available. Consult manufacturer specifications.',
+                    confidence: 'Low',
+                    warning: null,
+                    timingClass: 'unknown',
+                    engineClass: 'unknown'
+                };
+            }
+
+            const warning = engine.timing === 'Timing Belt' && engine.interference ? 
+                'CRITICAL: Timing belt failure will cause severe engine damage!' : null;
+
+            return {
+                timing: engine.timing,
+                engine: engine.interference ? 'Interference Engine' : 'Non-Interference Engine',
+                interval: engine.interval,
+                notes: engine.notes,
+                confidence: 'High',
+                warning: warning,
+                timingClass: engine.timing.toLowerCase().replace(' ', '-'),
+                engineClass: engine.interference ? 'interference' : 'non-interference'
+            };
+        }
+
+        // Auto-capitalize inputs and trigger engine update
+        document.getElementById('make').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\b\w/g, c => c.toUpperCase());
+            updateEngineOptions();
+        });
+
+        document.getElementById('model').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\b\w/g, c => c.toUpperCase());
+            updateEngineOptions();
+        });
+
+        document.getElementById('year').addEventListener('input', function(e) {
+            updateEngineOptions();
+        });
+
+        // Allow Enter key to submit
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchTiming();
+            }
+        });
+    </script>
+</body>
+</html> '
