@@ -1,0 +1,17 @@
+{
+  "name": "Auto Timing Pro",
+  "short_name": "TimingPro",
+  "description": "Professional timing belt/chain diagnostic tool",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#2c3e50",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
