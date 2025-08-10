@@ -8,9 +8,8 @@
     <meta name="theme-color" content="#667eea">
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icon.svg" type="image/svg+xml">
-        
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkF1dG8gVGltaW5nIFBybyIsCiAgInNob3J0X25hbWUiOiAiVGltaW5nUHJvIiwKICAiZGVzY3JpcHRpb24iOiAiUHJvZmVzc2lvbmFsIHRpbWluZyBiZWx0L2NoYWluIGRpYWdub3N0aWMgdG9vbCIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzY2N2VlYSIsCiAgInRoZW1lX2NvbG9yIjogIiM2NjdlZWEiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSnpOakVpSUdobGFXZG9kRDBpTlRZeElpQjJhV1YzUW05NFBTSXdJREFnTlRZeElEVTJNU0krUEhKbFkzUWdkMmxrZEdnOUlqVTJNU0lnYUdWcFoyaDBQU0kxTmpFaUlHWnBiR3c5SWlOalpqY3lNakZpSWlCeWVEMGlNamtpTHo0OFkybHlZMnhsSUdONFBTSXlPREVpSUdONVBTSXlPREVpSUhJOUlqRTNOU0lnWm1sc2JEMGlJelkwTjJWbFlTSXZQanh3WVhSb0lHUTlJazAwTlRJZ01qQXdiREkwT0NJek16a3RNaTQySURjZ09EWWdNVFl0TVRZM0lEUXdNU3d0ZkRFMUlEWXVOaUJOTVRRMElEZ3lJREV4TjBzeE56cDBNVE54SWpCYUluTjJaeTA0STJKMFFnMHJJaTVzYnk1a1pYY3ZiWFdRZWdSMlp5QXVjemdCbW9OTkdkWFZYa2lJR1pwYkd3OUlpTm1NU2VrOFpHUWlMejQ4YzNabksiLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+    
     <!-- Apple PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -373,6 +372,10 @@
                 🔍 Get Timing Information
             </button>
             
+            <button class="search-btn" onclick="clearForm()" style="background: #95a5a6; margin-top: 10px; padding: 15px; font-size: 1em;">
+                🔄 Clear Form
+            </button>
+            
             <div id="results" class="results">
                 <div id="loading" class="loading" style="display: none;">
                     <div class="loading-spinner"></div>
@@ -574,10 +577,19 @@
             const year = document.getElementById('year').value;
             const make = document.getElementById('make').value.trim();
             const model = document.getElementById('model').value.trim();
-            const engine = document.getElementById('engine').value;
+            const engineSelect = document.getElementById('engine');
+            const engine = engineSelect.value;
             
             if (!year || !make || !model) {
                 alert('Please fill in Year, Make, and Model');
+                return;
+            }
+            
+            // Check if engine dropdown is visible and has options
+            const engineGroup = document.getElementById('engineGroup');
+            if (engineGroup.style.display === 'none' || engineSelect.options.length <= 1) {
+                // No engines available for this vehicle
+                showVehicleNotFound(year, make, model);
                 return;
             }
             
@@ -598,6 +610,56 @@
                 loading.style.display = 'none';
                 showResults(year, make, model, engine);
             }, 1500);
+        }
+
+        function showVehicleNotFound(year, make, model) {
+            const results = document.getElementById('results');
+            const loading = document.getElementById('loading');
+            const content = document.getElementById('content');
+            
+            results.classList.add('show');
+            loading.style.display = 'none';
+            
+            content.innerHTML = `
+                <div class="vehicle-info">
+                    🚗 ${year} ${make} ${model}
+                </div>
+                
+                <div class="result-item" style="border-left-color: #e67e22;">
+                    <div class="result-title">⚠️ Vehicle Not Found</div>
+                    <div class="result-value" style="background: #ffeaa7; color: #e17055;">
+                        This vehicle is not in our current database.
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">📋 Current Database Includes</div>
+                    <div class="result-value" style="background: #f8f9fa; color: #495057;">
+                        • Honda Accord (1998-2012)<br>
+                        • Honda Civic (2001-2015)<br>
+                        • Toyota Camry (1997-2017)<br>
+                        • Subaru Outback (2000-2014)<br>
+                        • Ford F-150 (2004-2016)<br>
+                        • Nissan Altima (2002-2018)
+                    </div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-title">🔧 Recommendation</div>
+                    <div class="result-value" style="background: #e3f2fd; color: #1565c0;">
+                        Please consult your service manual for timing information on this vehicle.
+                    </div>
+                </div>
+            `;
+        }
+
+        function clearForm() {
+            document.getElementById('year').value = '';
+            document.getElementById('make').value = '';
+            document.getElementById('model').value = '';
+            document.getElementById('engine').value = '';
+            document.getElementById('engineGroup').style.display = 'none';
+            document.getElementById('results').classList.remove('show');
         }
 
         function showResults(year, make, model, engineCode) {
