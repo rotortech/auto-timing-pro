@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34495e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="chainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f39c12;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e67e22;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background with rounded corners -->
+  <rect width="512" height="512" rx="80" ry="80" fill="url(#bgGrad)"/>
+  
+  <!-- Main gear -->
+  <g transform="translate(256,256)">
+    <!-- Outer gear teeth -->
+    <circle cx="0" cy="0" r="140" fill="url(#gearGrad)"/>
+    <polygon points="0,-150 20,-130 -20,-130" fill="url(#gearGrad)"/>
+    <polygon points="106,-106 126,-86 86,-126" fill="url(#gearGrad)"/>
+    <polygon points="150,0 130,20 130,-20" fill="url(#gearGrad)"/>
+    <polygon points="106,106 86,126 126,86" fill="url(#gearGrad)"/>
+    <polygon points="0,150 -20,130 20,130" fill="url(#gearGrad)"/>
+    <polygon points="-106,106 -126,86 -86,126" fill="url(#gearGrad)"/>
+    <polygon points="-150,0 -130,-20 -130,20" fill="url(#gearGrad)"/>
+    <polygon points="-106,-106 -86,-126 -126,-86" fill="url(#gearGrad)"/>
+    
+    <!-- Inner circle -->
+    <circle cx="0" cy="0" r="80" fill="#2c3e50"/>
+    <circle cx="0" cy="0" r="25" fill="#34495e"/>
+  </g>
+  
+  <!-- Timing chain around gear -->
+  <g transform="translate(256,256)">
+    <!-- Chain links -->
+    <ellipse cx="0" cy="-120" rx="8" ry="12" fill="url(#chainGrad)" transform="rotate(0)"/>
+    <ellipse cx="85" cy="-85" rx="8" ry="12" fill="url(#chainGrad)" transform="rotate(45)"/>
+    <ellipse cx="120" cy="0" rx="8" ry="12" fill="url(#chainGrad)" transform="rotate(90)"/>
+    <ellipse cx="85" cy="85" rx="8" ry="12" fill="url(#chainGrad)" transform="rotate(135)"/>
+    <ellipse cx="0" cy="120" rx="8" ry="12" fill="url(#chainGrad)" transform="rotate(180)"/>
+    <ellipse cx="-85" cy="85" rx="8" ry="12" fill="url(#chainGrad)" transform="rotate(225)"/>
+    <ellipse cx="-120" cy="0" rx="8" ry="12" fill="url(#chainGrad)" transform="rotate(270)"/>
+    <ellipse cx="-85" cy="-85" rx="8" ry="12" fill="url(#chainGrad)" transform="rotate(315)"/>
+    
+    <!-- Additional chain links for density -->
+    <ellipse cx="42" cy="-113" rx="6" ry="10" fill="#e67e22" transform="rotate(22.5)"/>
+    <ellipse cx="113" cy="-42" rx="6" ry="10" fill="#e67e22" transform="rotate(67.5)"/>
+    <ellipse cx="113" cy="42" rx="6" ry="10" fill="#e67e22" transform="rotate(112.5)"/>
+    <ellipse cx="42" cy="113" rx="6" ry="10" fill="#e67e22" transform="rotate(157.5)"/>
+    <ellipse cx="-42" cy="113" rx="6" ry="10" fill="#e67e22" transform="rotate(202.5)"/>
+    <ellipse cx="-113" cy="42" rx="6" ry="10" fill="#e67e22" transform="rotate(247.5)"/>
+    <ellipse cx="-113" cy="-42" rx="6" ry="10" fill="#e67e22" transform="rotate(292.5)"/>
+    <ellipse cx="-42" cy="-113" rx="6" ry="10" fill="#e67e22" transform="rotate(337.5)"/>
+  </g>
+  
+  <!-- Wrench icon in bottom right -->
+  <g transform="translate(400,400) scale(0.8)">
+    <path d="M45 15 L35 25 L25 15 L15 25 L25 35 L35 25 L45 35 L55 25 Z" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+    <circle cx="40" cy="40" r="8" fill="none" stroke="#ecf0f1" stroke-width="3"/>
+  </g>
+  
+  <!-- Small "T" for Timing in top corner -->
+  <text x="80" y="100" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ecf0f1">T</text>
+</svg>
