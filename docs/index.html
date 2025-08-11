@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Timing Pro</title>
-    <meta name="description" content="Professional timing diagnostics for mobile mechanics">
+    <meta name="description" content="Professional timing belt and chain service intervals for mobile mechanics">
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#1a365d">
@@ -187,15 +187,53 @@
             font-size: 1.5rem;
         }
 
-        .timing-info {
+        .service-info {
             background: #f8f9fa;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 15px;
         }
 
-        .timing-info strong {
+        .service-info strong {
             color: #495057;
+        }
+
+        .timing-type {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .timing-belt {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeaa7;
+        }
+
+        .timing-chain {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 2px solid #bee5eb;
+        }
+
+        .interference-warning {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .non-interference {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
         }
 
         .error {
@@ -232,7 +270,7 @@
             padding: 30px;
             border-radius: 15px;
             width: 90%;
-            max-width: 500px;
+            max-width: 600px;
             max-height: 80vh;
             overflow-y: auto;
             position: relative;
@@ -327,6 +365,16 @@
             margin-top: 20px;
         }
 
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-row > * {
+            flex: 1;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -349,6 +397,10 @@
             .main-form {
                 padding: 20px;
             }
+
+            .form-row {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -356,7 +408,7 @@
     <div class="container">
         <div class="header">
             <h1>🔧 Auto Timing Pro</h1>
-            <p>Professional timing diagnostics for mobile mechanics</p>
+            <p>Professional timing belt & chain service intervals</p>
         </div>
 
         <div class="status-bar" id="statusBar">
@@ -397,7 +449,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary" id="searchBtn">
-                    🔍 Get Timing Information
+                    🔍 Get Service Information
                 </button>
 
                 <button type="button" class="btn btn-secondary" id="clearBtn">
@@ -411,8 +463,8 @@
         </div>
 
         <div class="results" id="results">
-            <h3>Timing Specifications</h3>
-            <div id="timingData"></div>
+            <h3>Service Information</h3>
+            <div id="serviceData"></div>
         </div>
     </div>
 
@@ -453,7 +505,7 @@
             </div>
 
             <div id="engines" class="admin-tab-content">
-                <h3>Engines</h3>
+                <h3>Engines & Service Intervals</h3>
                 <select id="engineManufacturerFilter" style="margin-bottom: 10px;">
                     <option value="">Select manufacturer</option>
                 </select>
@@ -468,9 +520,27 @@
                     <select id="newEngineModel" style="margin-bottom: 10px;" disabled>
                         <option value="">Select model for new engine</option>
                     </select>
-                    <input type="text" id="newEngineName" placeholder="Engine name (e.g., 5.7L V8 Hemi)" style="margin-bottom: 10px;">
-                    <input type="text" id="newEngineSpecs" placeholder="Timing specs (e.g., 10° BTDC @ idle)" style="margin-bottom: 10px;">
-                    <textarea id="newEngineNotes" placeholder="Additional notes..." rows="3" style="width: 100%; margin-bottom: 10px; padding: 10px; border: 2px solid #e1e5e9; border-radius: 10px; resize: vertical;"></textarea>
+                    <input type="text" id="newEngineName" placeholder="Engine name (e.g., 2.0L DOHC Turbo)" style="margin-bottom: 10px;">
+                    
+                    <div class="form-row">
+                        <select id="newEngineType" style="margin-bottom: 10px;">
+                            <option value="">Timing Type</option>
+                            <option value="belt">Timing Belt</option>
+                            <option value="chain">Timing Chain</option>
+                        </select>
+                        <select id="newEngineInterference" style="margin-bottom: 10px;">
+                            <option value="">Engine Type</option>
+                            <option value="interference">Interference</option>
+                            <option value="non-interference">Non-Interference</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <input type="number" id="newEngineInterval" placeholder="Service interval (miles)" style="margin-bottom: 10px;">
+                        <input type="number" id="newEngineIntervalTime" placeholder="Time interval (years)" style="margin-bottom: 10px;">
+                    </div>
+                    
+                    <textarea id="newEngineNotes" placeholder="Additional service notes (water pump, tensioner, etc.)..." rows="3" style="width: 100%; margin-bottom: 10px; padding: 10px; border: 2px solid #e1e5e9; border-radius: 10px; resize: vertical;"></textarea>
                     <button type="button" class="btn btn-primary" id="addEngine">Add Engine</button>
                 </div>
             </div>
@@ -490,9 +560,9 @@
             loadData() {
                 try {
                     // Load from local storage or initialize with default data
-                    const savedManufacturers = localStorage.getItem('auto-timing-manufacturers');
-                    const savedModels = localStorage.getItem('auto-timing-models');
-                    const savedEngines = localStorage.getItem('auto-timing-engines');
+                    const savedManufacturers = localStorage.getItem('timing-service-manufacturers');
+                    const savedModels = localStorage.getItem('timing-service-models');
+                    const savedEngines = localStorage.getItem('timing-service-engines');
 
                     if (savedManufacturers && savedModels && savedEngines) {
                         this.manufacturers = JSON.parse(savedManufacturers);
@@ -509,21 +579,24 @@
 
             initializeDefaultData() {
                 this.manufacturers = [
-                    { id: 1, name: "Chevrolet" },
-                    { id: 2, name: "Ford" },
-                    { id: 3, name: "Dodge" },
-                    { id: 4, name: "Toyota" },
-                    { id: 5, name: "Honda" }
+                    { id: 1, name: "Honda" },
+                    { id: 2, name: "Toyota" },
+                    { id: 3, name: "Ford" },
+                    { id: 4, name: "Chevrolet" },
+                    { id: 5, name: "BMW" },
+                    { id: 6, name: "Volkswagen" }
                 ];
 
                 this.models = [
-                    { id: 1, manufacturerId: 1, name: "Silverado" },
-                    { id: 2, manufacturerId: 1, name: "Camaro" },
-                    { id: 3, manufacturerId: 2, name: "F-150" },
-                    { id: 4, manufacturerId: 2, name: "Mustang" },
-                    { id: 5, manufacturerId: 3, name: "Ram 1500" },
-                    { id: 6, manufacturerId: 4, name: "Camry" },
-                    { id: 7, manufacturerId: 5, name: "Civic" }
+                    { id: 1, manufacturerId: 1, name: "Civic" },
+                    { id: 2, manufacturerId: 1, name: "Accord" },
+                    { id: 3, manufacturerId: 1, name: "CR-V" },
+                    { id: 4, manufacturerId: 2, name: "Camry" },
+                    { id: 5, manufacturerId: 2, name: "Corolla" },
+                    { id: 6, manufacturerId: 3, name: "Focus" },
+                    { id: 7, manufacturerId: 4, name: "Malibu" },
+                    { id: 8, manufacturerId: 5, name: "3 Series" },
+                    { id: 9, manufacturerId: 6, name: "Jetta" }
                 ];
 
                 this.engines = [
@@ -531,25 +604,45 @@
                         id: 1, 
                         manufacturerId: 1, 
                         modelId: 1, 
-                        name: "5.3L V8", 
-                        specs: "0° TDC @ idle, 32° @ 2500 RPM",
-                        notes: "LS based engine, use distributor timing"
+                        name: "1.5L DOHC VTEC Turbo", 
+                        timingType: "belt",
+                        interferenceType: "interference",
+                        serviceInterval: 60000,
+                        timeInterval: 6,
+                        notes: "Replace water pump and tensioner with belt. Check cam follower."
                     },
                     { 
                         id: 2, 
-                        manufacturerId: 2, 
-                        modelId: 3, 
-                        name: "5.0L V8", 
-                        specs: "10° BTDC @ idle, advance curve varies",
-                        notes: "Coyote engine, electronic timing control"
+                        manufacturerId: 1, 
+                        modelId: 2, 
+                        name: "2.0L DOHC VTEC", 
+                        timingType: "chain",
+                        interferenceType: "interference",
+                        serviceInterval: 100000,
+                        timeInterval: 10,
+                        notes: "Chain tensioner and guides should be inspected. VTC actuator common failure point."
                     },
                     { 
                         id: 3, 
-                        manufacturerId: 3, 
-                        modelId: 5, 
-                        name: "5.7L V8 Hemi", 
-                        specs: "12° BTDC @ idle",
-                        notes: "Variable cam timing, use scanner for verification"
+                        manufacturerId: 2, 
+                        modelId: 4, 
+                        name: "2.5L DOHC", 
+                        timingType: "chain",
+                        interferenceType: "interference",
+                        serviceInterval: 120000,
+                        timeInterval: 10,
+                        notes: "Generally reliable. Check oil control valve and VVT phaser."
+                    },
+                    { 
+                        id: 4, 
+                        manufacturerId: 6, 
+                        modelId: 9, 
+                        name: "2.0T FSI", 
+                        timingType: "belt",
+                        interferenceType: "interference",
+                        serviceInterval: 80000,
+                        timeInterval: 8,
+                        notes: "Replace water pump, tensioner, and cam follower. Common cam chain tensioner failure."
                     }
                 ];
 
@@ -558,9 +651,9 @@
 
             saveData() {
                 try {
-                    localStorage.setItem('auto-timing-manufacturers', JSON.stringify(this.manufacturers));
-                    localStorage.setItem('auto-timing-models', JSON.stringify(this.models));
-                    localStorage.setItem('auto-timing-engines', JSON.stringify(this.engines));
+                    localStorage.setItem('timing-service-manufacturers', JSON.stringify(this.manufacturers));
+                    localStorage.setItem('timing-service-models', JSON.stringify(this.models));
+                    localStorage.setItem('timing-service-engines', JSON.stringify(this.engines));
                 } catch (error) {
                     console.error('Error saving data:', error);
                 }
@@ -595,14 +688,17 @@
                 return id;
             }
 
-            addEngine(manufacturerId, modelId, name, specs, notes) {
+            addEngine(manufacturerId, modelId, name, timingType, interferenceType, serviceInterval, timeInterval, notes) {
                 const id = Math.max(0, ...this.engines.map(e => e.id)) + 1;
                 this.engines.push({ 
                     id, 
                     manufacturerId: parseInt(manufacturerId), 
                     modelId: parseInt(modelId), 
                     name, 
-                    specs, 
+                    timingType,
+                    interferenceType,
+                    serviceInterval: parseInt(serviceInterval) || 0,
+                    timeInterval: parseInt(timeInterval) || 0,
                     notes 
                 });
                 this.saveData();
@@ -642,7 +738,7 @@
             clearBtn: document.getElementById('clearBtn'),
             adminBtn: document.getElementById('adminBtn'),
             results: document.getElementById('results'),
-            timingData: document.getElementById('timingData'),
+            serviceData: document.getElementById('serviceData'),
             adminModal: document.getElementById('adminModal'),
             installPrompt: document.getElementById('installPrompt'),
             installBtn: document.getElementById('installBtn'),
@@ -787,21 +883,44 @@
             const manufacturer = dataManager.manufacturers.find(m => m.id === engine.manufacturerId);
             const model = dataManager.models.find(m => m.id === engine.modelId);
             
-            elements.timingData.innerHTML = `
-                <div class="timing-info">
+            const timingTypeClass = engine.timingType === 'belt' ? 'timing-belt' : 'timing-chain';
+            const timingTypeText = engine.timingType === 'belt' ? '⚙️ Timing Belt' : '🔗 Timing Chain';
+            
+            const interferenceClass = engine.interferenceType === 'interference' ? 'interference-warning' : 'non-interference';
+            const interferenceText = engine.interferenceType === 'interference' ? 
+                '⚠️ INTERFERENCE ENGINE - Engine damage will occur if timing component fails!' : 
+                '✅ NON-INTERFERENCE ENGINE - Minimal risk if timing component fails';
+            
+            const serviceIntervalText = engine.serviceInterval > 0 ? 
+                `${engine.serviceInterval.toLocaleString()} miles` : 'No specific interval';
+            const timeIntervalText = engine.timeInterval > 0 ? 
+                `${engine.timeInterval} years` : 'No time limit specified';
+            
+            elements.serviceData.innerHTML = `
+                <div class="service-info">
                     <strong>Vehicle:</strong> ${elements.year.value} ${manufacturer.name} ${model.name}
                 </div>
-                <div class="timing-info">
+                <div class="service-info">
                     <strong>Engine:</strong> ${engine.name}
                 </div>
-                <div class="timing-info">
-                    <strong>Timing Specification:</strong> ${engine.specs}
+                <div class="service-info">
+                    <span class="timing-type ${timingTypeClass}">${timingTypeText}</span>
+                </div>
+                <div class="service-info">
+                    <strong>Service Interval:</strong><br>
+                    📏 ${serviceIntervalText}<br>
+                    📅 ${timeIntervalText}<br>
+                    <small><em>Whichever comes first</em></small>
                 </div>
                 ${engine.notes ? `
-                    <div class="timing-info">
-                        <strong>Notes:</strong> ${engine.notes}
+                    <div class="service-info">
+                        <strong>Service Notes:</strong><br>
+                        ${engine.notes}
                     </div>
                 ` : ''}
+                <div class="${interferenceClass}">
+                    ${interferenceText}
+                </div>
             `;
             
             elements.results.style.display = 'block';
@@ -809,7 +928,7 @@
         }
 
         function displayError(message) {
-            elements.timingData.innerHTML = `<div class="error">${message}</div>`;
+            elements.serviceData.innerHTML = `<div class="error">${message}</div>`;
             elements.results.style.display = 'block';
         }
 
@@ -912,13 +1031,17 @@
             const model = dataManager.models.find(m => m.id == modelFilter);
             
             engines.forEach(engine => {
+                const timingIcon = engine.timingType === 'belt' ? '⚙️' : '🔗';
+                const interferenceIcon = engine.interferenceType === 'interference' ? '⚠️' : '✅';
+                
                 const item = document.createElement('div');
                 item.className = 'admin-item';
                 item.innerHTML = `
                     <div>
                         <strong>${engine.name}</strong><br>
                         <small>${manufacturer.name} ${model.name}</small><br>
-                        <small>Specs: ${engine.specs}</small>
+                        <small>${timingIcon} ${engine.timingType} | ${interferenceIcon} ${engine.interferenceType}</small><br>
+                        <small>Service: ${engine.serviceInterval ? engine.serviceInterval.toLocaleString() + ' miles' : 'No interval'} / ${engine.timeInterval ? engine.timeInterval + ' years' : 'No time limit'}</small>
                         ${engine.notes ? `<br><small>Notes: ${engine.notes}</small>` : ''}
                     </div>
                     <button class="delete-btn" onclick="deleteEngine(${engine.id})">Delete</button>
@@ -1008,17 +1131,23 @@
             const manufacturerSelect = document.getElementById('newEngineManufacturer');
             const modelSelect = document.getElementById('newEngineModel');
             const nameInput = document.getElementById('newEngineName');
-            const specsInput = document.getElementById('newEngineSpecs');
+            const typeSelect = document.getElementById('newEngineType');
+            const interferenceSelect = document.getElementById('newEngineInterference');
+            const intervalInput = document.getElementById('newEngineInterval');
+            const timeIntervalInput = document.getElementById('newEngineIntervalTime');
             const notesInput = document.getElementById('newEngineNotes');
             
             const manufacturerId = manufacturerSelect.value;
             const modelId = modelSelect.value;
             const name = nameInput.value.trim();
-            const specs = specsInput.value.trim();
+            const timingType = typeSelect.value;
+            const interferenceType = interferenceSelect.value;
+            const serviceInterval = intervalInput.value;
+            const timeInterval = timeIntervalInput.value;
             const notes = notesInput.value.trim();
             
-            if (!manufacturerId || !modelId || !name || !specs) {
-                alert('Please fill in all required fields (manufacturer, model, engine name, and specs)');
+            if (!manufacturerId || !modelId || !name || !timingType || !interferenceType) {
+                alert('Please fill in all required fields (manufacturer, model, engine name, timing type, and interference type)');
                 return;
             }
             
@@ -1031,9 +1160,12 @@
                 return;
             }
             
-            dataManager.addEngine(manufacturerId, modelId, name, specs, notes);
+            dataManager.addEngine(manufacturerId, modelId, name, timingType, interferenceType, serviceInterval, timeInterval, notes);
             nameInput.value = '';
-            specsInput.value = '';
+            typeSelect.value = '';
+            interferenceSelect.value = '';
+            intervalInput.value = '';
+            timeIntervalInput.value = '';
             notesInput.value = '';
             refreshAdminData();
         }
@@ -1065,7 +1197,6 @@
         }
 
         function updateModelForm() {
-            // This function can be used to update model form state if needed
             refreshModelsList();
         }
 
