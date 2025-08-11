@@ -1,0 +1,141 @@
+{
+  "ACCORD": {
+    "1990-1993": [
+      { "code": "F22A1", "description": "2.2L 4-Cyl SOHC (F22A1)" },
+      { "code": "F22A6", "description": "2.2L 4-Cyl SOHC VTEC (F22A6)" }
+    ],
+    "1994-1997": [
+      { "code": "F22B1", "description": "2.2L 4-Cyl SOHC (F22B1)" },
+      { "code": "F22B2", "description": "2.2L 4-Cyl SOHC VTEC (F22B2)" },
+      { "code": "H22A1", "description": "2.2L 4-Cyl DOHC VTEC (H22A1)" }
+    ],
+    "1998-2002": [
+      { "code": "F23A1", "description": "2.3L 4-Cyl SOHC VTEC (F23A1)" },
+      { "code": "J30A1", "description": "3.0L V6 SOHC VTEC (J30A1)" }
+    ],
+    "2003-2007": [
+      { "code": "K24A4", "description": "2.4L 4-Cyl DOHC i-VTEC (K24A4)" },
+      { "code": "J30A5", "description": "3.0L V6 SOHC VTEC (J30A5)" }
+    ],
+    "2008-2012": [
+      { "code": "K24Z3", "description": "2.4L 4-Cyl DOHC i-VTEC (K24Z3)" },
+      { "code": "J35Z2", "description": "3.5L V6 SOHC VTEC (J35Z2)" }
+    ],
+    "2013-2017": [
+      { "code": "K24W1", "description": "2.4L 4-Cyl DOHC i-VTEC (K24W1)" },
+      { "code": "J35Y2", "description": "3.5L V6 SOHC VTEC (J35Y2)" }
+    ],
+    "2018-2020": [
+      { "code": "K20C4", "description": "1.5L 4-Cyl Turbo DOHC VTEC (K20C4)" },
+      { "code": "K24W7", "description": "2.0L 4-Cyl Turbo DOHC VTEC (K24W7)" }
+    ]
+  },
+  "CIVIC": {
+    "1992-1995": [
+      { "code": "D15B7", "description": "1.5L 4-Cyl SOHC (D15B7)" },
+      { "code": "D15B8", "description": "1.5L 4-Cyl SOHC VTEC-E (D15B8)" },
+      { "code": "D16Z6", "description": "1.6L 4-Cyl SOHC VTEC (D16Z6)" }
+    ],
+    "1996-2000": [
+      { "code": "D16Y7", "description": "1.6L 4-Cyl SOHC (D16Y7)" },
+      { "code": "D16Y8", "description": "1.6L 4-Cyl SOHC VTEC (D16Y8)" },
+      { "code": "B16A2", "description": "1.6L 4-Cyl DOHC VTEC (B16A2)" }
+    ],
+    "2001-2005": [
+      { "code": "D17A1", "description": "1.7L 4-Cyl SOHC VTEC (D17A1)" },
+      { "code": "D17A2", "description": "1.7L 4-Cyl SOHC VTEC-E (D17A2)" },
+      { "code": "K20A3", "description": "2.0L 4-Cyl DOHC i-VTEC Si (K20A3)" }
+    ],
+    "2006-2011": [
+      { "code": "R18A1", "description": "1.8L 4-Cyl SOHC i-VTEC (R18A1)" },
+      { "code": "K20Z3", "description": "2.0L 4-Cyl DOHC i-VTEC Si (K20Z3)" }
+    ],
+    "2012-2015": [
+      { "code": "R18Z1", "description": "1.8L 4-Cyl SOHC i-VTEC (R18Z1)" },
+      { "code": "K24Z7", "description": "2.4L 4-Cyl DOHC i-VTEC Si (K24Z7)" }
+    ],
+    "2016-2020": [
+      { "code": "K20C4", "description": "1.5L 4-Cyl Turbo DOHC VTEC (K20C4)" },
+      { "code": "K20C1", "description": "2.0L 4-Cyl Turbo DOHC VTEC Si (K20C1)" }
+    ]
+  },
+  "CR-V": {
+    "1997-2001": [
+      { "code": "B20B4", "description": "2.0L 4-Cyl DOHC (B20B4)" }
+    ],
+    "2002-2006": [
+      { "code": "K24A1", "description": "2.4L 4-Cyl DOHC i-VTEC (K24A1)" }
+    ],
+    "2007-2011": [
+      { "code": "K24Z1", "description": "2.4L 4-Cyl DOHC i-VTEC (K24Z1)" }
+    ],
+    "2012-2016": [
+      { "code": "K24Z6", "description": "2.4L 4-Cyl DOHC i-VTEC (K24Z6)" }
+    ],
+    "2017-2020": [
+      { "code": "K20C4", "description": "1.5L 4-Cyl Turbo DOHC VTEC (K20C4)" }
+    ]
+  },
+  "ELEMENT": {
+    "2003-2011": [
+      { "code": "K24A4", "description": "2.4L 4-Cyl DOHC i-VTEC (K24A4)" }
+    ]
+  },
+  "FIT": {
+    "2007-2008": [
+      { "code": "L15A7", "description": "1.5L 4-Cyl SOHC i-VTEC (L15A7)" }
+    ],
+    "2009-2014": [
+      { "code": "L15A7", "description": "1.5L 4-Cyl SOHC i-VTEC (L15A7)" }
+    ],
+    "2015-2020": [
+      { "code": "L15B7", "description": "1.5L 4-Cyl DOHC i-VTEC (L15B7)" }
+    ]
+  },
+  "ODYSSEY": {
+    "1995-1998": [
+      { "code": "F22B6", "description": "2.2L 4-Cyl SOHC VTEC (F22B6)" }
+    ],
+    "1999-2004": [
+      { "code": "J35A4", "description": "3.5L V6 SOHC VTEC (J35A4)" }
+    ],
+    "2005-2010": [
+      { "code": "J35A7", "description": "3.5L V6 SOHC VTEC (J35A7)" }
+    ],
+    "2011-2017": [
+      { "code": "J35Z4", "description": "3.5L V6 SOHC VTEC (J35Z4)" }
+    ],
+    "2018-2020": [
+      { "code": "J35Y6", "description": "3.5L V6 SOHC VTEC (J35Y6)" }
+    ]
+  },
+  "PILOT": {
+    "2003-2008": [
+      { "code": "J35A5", "description": "3.5L V6 SOHC VTEC (J35A5)" }
+    ],
+    "2009-2015": [
+      { "code": "J35Z4", "description": "3.5L V6 SOHC VTEC (J35Z4)" }
+    ],
+    "2016-2020": [
+      { "code": "J35Y6", "description": "3.5L V6 SOHC VTEC (J35Y6)" }
+    ]
+  },
+  "PRELUDE": {
+    "1992-1996": [
+      { "code": "F22A1", "description": "2.2L 4-Cyl SOHC (F22A1)" },
+      { "code": "H22A1", "description": "2.2L 4-Cyl DOHC VTEC (H22A1)" }
+    ],
+    "1997-2001": [
+      { "code": "F22A1", "description": "2.2L 4-Cyl SOHC (F22A1)" },
+      { "code": "H22A4", "description": "2.2L 4-Cyl DOHC VTEC (H22A4)" }
+    ]
+  },
+  "RIDGELINE": {
+    "2006-2014": [
+      { "code": "J35A9", "description": "3.5L V6 SOHC VTEC (J35A9)" }
+    ],
+    "2017-2020": [
+      { "code": "J35Y6", "description": "3.5L V6 SOHC VTEC (J35Y6)" }
+    ]
+  }
+}
