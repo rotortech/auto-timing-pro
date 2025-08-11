@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Timing Pro</title>
-    <meta name="description" content="Professional timing belt/chain diagnostic tool for mobile mechanics">
-    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Professional timing diagnostics for mobile mechanics">
     
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkF1dG8gVGltaW5nIFBybyIsCiAgInNob3J0X25hbWUiOiAiVGltaW5nUHJvIiwKICAiZGVzY3JpcHRpb24iOiAiUHJvZmVzc2lvbmFsIHRpbWluZyBiZWx0L2NoYWluIGRpYWdub3N0aWMgdG9vbCIsCiAgInN0YXJ0X3VybCI6ICIuLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzY2N2VlYSIsCiAgInRoZW1lX2NvbG9yIjogIiM2NjdlZWEiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSnpOakVpSUdobGFXZG9kRDBpTlRZeElpQjJhV1YzUW05NFBTSXdJREFnTlRZeElEVTJNU0krUEhKbFkzUWdkMmxrZEdnOUlqVTJNU0lnYUdWcFoyaDBQU0kxTmpFaUlHWnBiR3c5SWlOalpqY3lNakZpSWlCeWVEMGlNamtpTHo0OFkybHlZMnhsSUdONFBTSXlPREVpSUdONVBTSXlPREVpSUhJOUlqRTNOU0lnWm1sc2JEMGlJelkwTjJWbFlTSXZQanh3WVhSb0lHUTlJazAwTlRJZ01qQXdiREkwT0NJek16a3RNaTQySURjZ09EWWdNVFl0TVRZM0lEUXdNU3d0ZkRFMUlEWXVOaUJOTVRRMElEZ3lJREV4TjBzeE56cDBNVE54SWpCYUluTjJaeTA0STJKMFFnMHJJaTVzYnk1a1pYY3ZiWFdRZWdSMlp5QXVjemdCbW9OTkdkWFZYa2lJR1pwYkd3OUlpTm1NU2VrOFpHUWlMejQ4YzNabksiLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
-    
-    <!-- Apple PWA -->
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1a365d">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Auto Timing Pro">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
     
     <style>
         * {
@@ -23,49 +28,77 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 10px;
-            margin: 0;
-            padding-top: max(10px, env(safe-area-inset-top));
-            padding-bottom: max(10px, env(safe-area-inset-bottom));
+            color: #333;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 500px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-            min-height: calc(100vh - 20px);
+            padding: 20px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
         .header {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            color: white;
-            padding: 20px;
             text-align: center;
-            padding-top: max(20px, env(safe-area-inset-top));
+            margin-bottom: 30px;
+            color: white;
         }
 
         .header h1 {
-            font-size: 2em;
-            margin-bottom: 8px;
-            font-weight: 300;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
             opacity: 0.9;
-            font-size: 1em;
+            font-size: 1.1rem;
         }
 
-        .form-section {
-            padding: 20px;
-            flex: 1;
+        .status-bar {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .install-prompt {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .install-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .main-form {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .form-group {
@@ -76,710 +109,1055 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #2c3e50;
-            font-size: 1.1em;
+            color: #555;
         }
 
-        input, select {
+        select, input {
             width: 100%;
-            padding: 18px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 18px;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            background: white;
             transition: all 0.3s ease;
-            background: #fafafa;
-            -webkit-appearance: none;
-            box-sizing: border-box;
         }
 
-        input:focus, select:focus {
+        select:focus, input:focus {
             outline: none;
             border-color: #667eea;
-            background: white;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
-        .search-btn {
+        select:disabled, input:disabled {
+            background: #f8f9fa;
+            color: #6c757d;
+        }
+
+        .btn {
             width: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            padding: 15px;
             border: none;
-            border-radius: 12px;
-            font-size: 1.3em;
+            border-radius: 10px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            touch-action: manipulation;
-            user-select: none;
+            margin-bottom: 10px;
         }
 
-        .search-btn:hover, .search-btn:active {
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .search-btn:disabled {
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-admin {
+            background: #fd7e14;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
 
-        .install-prompt {
-            background: #e3f2fd;
-            border: 1px solid #2196f3;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: center;
-            display: none;
-        }
-
-        .install-btn {
-            background: #2196f3;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .offline-indicator {
-            background: #ff9800;
-            color: white;
-            text-align: center;
-            padding: 8px;
-            font-weight: 600;
-            display: none;
-        }
-
         .results {
-            margin-top: 30px;
-            padding: 25px;
-            background: #f8f9ff;
-            border-radius: 10px;
-            border-left: 5px solid #667eea;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 20px;
             display: none;
         }
 
-        .results.show {
-            display: block;
-        }
-
-        .vehicle-info {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
+        .results h3 {
+            color: #667eea;
             margin-bottom: 20px;
-            text-align: center;
-            font-size: 1.2em;
-            font-weight: 500;
+            font-size: 1.5rem;
         }
 
-        .result-item {
-            background: white;
+        .timing-info {
+            background: #f8f9fa;
+            border-radius: 10px;
             padding: 20px;
             margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-left: 4px solid #667eea;
         }
 
-        .result-title {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 10px;
+        .timing-info strong {
+            color: #495057;
         }
 
-        .result-value {
-            font-size: 1.1em;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: 500;
-        }
-
-        .timing-belt { 
-            background: #ffebee; 
-            color: #c62828; 
-            border-left-color: #e74c3c !important;
-        }
-        
-        .timing-chain { 
-            background: #e8f5e8; 
-            color: #2e7d32; 
-            border-left-color: #27ae60 !important;
-        }
-        
-        .interference { 
-            background: #fff3e0; 
-            color: #ef6c00; 
-            border-left-color: #f39c12 !important;
-        }
-        
-        .non-interference { 
-            background: #e3f2fd; 
-            color: #1565c0; 
-            border-left-color: #3498db !important;
-        }
-
-        .warning {
-            background: #ffebee;
-            border-left: 4px solid #e74c3c;
+        .error {
+            color: #dc3545;
+            text-align: center;
             padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-
-        .warning .result-value {
-            background: #ffcdd2;
-            color: #c62828;
-            font-weight: 600;
+            background: #f8d7da;
+            border-radius: 10px;
+            margin-top: 10px;
         }
 
         .loading {
             text-align: center;
             padding: 20px;
-            color: #666;
+            color: #6c757d;
         }
 
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
+        /* Admin Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 5px;
-            }
-            
+        .modal h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .admin-tabs {
+            display: flex;
+            border-bottom: 2px solid #e1e5e9;
+            margin-bottom: 20px;
+        }
+
+        .admin-tab {
+            flex: 1;
+            padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: #6c757d;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .admin-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .admin-tab-content {
+            display: none;
+        }
+
+        .admin-tab-content.active {
+            display: block;
+        }
+
+        .admin-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #e1e5e9;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .admin-item {
+            padding: 15px;
+            border-bottom: 1px solid #e1e5e9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-item:last-child {
+            border-bottom: none;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .admin-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
             .container {
-                margin: 0;
-                border-radius: 0;
-                min-height: 100vh;
-            }
-            
-            .header {
                 padding: 15px;
             }
             
             .header h1 {
-                font-size: 1.6em;
+                font-size: 2rem;
             }
             
-            .header p {
-                font-size: 0.9em;
-            }
-            
-            .form-section {
-                padding: 15px;
-            }
-            
-            .form-group {
-                margin-bottom: 15px;
-            }
-            
-            input, select {
-                padding: 16px;
-                font-size: 16px;
-            }
-            
-            .search-btn {
-                padding: 18px;
-                font-size: 1.1em;
-            }
-        }
-
-        @media (max-height: 500px) and (orientation: landscape) {
-            .header {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 1.4em;
-                margin-bottom: 5px;
-            }
-            
-            .header p {
-                display: none;
-            }
-            
-            .form-section {
-                padding: 10px;
-            }
-            
-            .form-group {
-                margin-bottom: 10px;
+            .main-form {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="offlineIndicator" class="offline-indicator">
-            📶 Offline Mode - Using cached data
-        </div>
-        
         <div class="header">
             <h1>🔧 Auto Timing Pro</h1>
             <p>Professional timing diagnostics for mobile mechanics</p>
         </div>
-        
-        <div class="form-section">
-            <div id="installPrompt" class="install-prompt">
-                <div>📱 Install Auto Timing Pro on your home screen for quick access!</div>
-                <button id="installBtn" class="install-btn">Install App</button>
+
+        <div class="status-bar" id="statusBar">
+            📶 Online Mode - Live data available
+        </div>
+
+        <div class="install-prompt" id="installPrompt">
+            <p>📱 Install Auto Timing Pro on your home screen for quick access!</p>
+            <button class="install-btn" id="installBtn">Install App</button>
+        </div>
+
+        <div class="main-form">
+            <form id="timingForm">
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input type="number" id="year" min="1950" max="2030" placeholder="Enter year" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="make">Make:</label>
+                    <select id="make" required>
+                        <option value="">Select Make...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <select id="model" disabled required>
+                        <option value="">Select Model...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="engine">Engine:</label>
+                    <select id="engine" disabled required>
+                        <option value="">Select Engine...</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="searchBtn">
+                    🔍 Get Timing Information
+                </button>
+
+                <button type="button" class="btn btn-secondary" id="clearBtn">
+                    🔄 Clear Form
+                </button>
+
+                <button type="button" class="btn btn-admin" id="adminBtn">
+                    ⚙️ Admin Panel
+                </button>
+            </form>
+        </div>
+
+        <div class="results" id="results">
+            <h3>Timing Specifications</h3>
+            <div id="timingData"></div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>⚙️ Admin Panel</h2>
+            
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="manufacturers">Manufacturers</button>
+                <button class="admin-tab" data-tab="models">Models</button>
+                <button class="admin-tab" data-tab="engines">Engines</button>
             </div>
 
-            <div class="form-group">
-                <label for="year">Year:</label>
-                <input type="number" id="year" min="1980" max="2025" placeholder="e.g., 2020">
-            </div>
-            
-            <div class="form-group">
-                <label for="make">Make:</label>
-                <input type="text" id="make" placeholder="e.g., Toyota, Honda, Ford">
-            </div>
-            
-            <div class="form-group">
-                <label for="model">Model:</label>
-                <input type="text" id="model" placeholder="e.g., Camry, Accord, F-150">
-            </div>
-            
-            <div class="form-group" id="engineGroup" style="display: none;">
-                <label for="engine">Engine:</label>
-                <select id="engine">
-                    <option value="">Select Engine...</option>
-                </select>
-            </div>
-            
-            <button class="search-btn" onclick="searchTiming()">
-                🔍 Get Timing Information
-            </button>
-            
-            <button class="search-btn" onclick="clearForm()" style="background: #95a5a6; margin-top: 10px; padding: 15px; font-size: 1em;">
-                🔄 Clear Form
-            </button>
-            
-            <div id="results" class="results">
-                <div id="loading" class="loading" style="display: none;">
-                    <div class="loading-spinner"></div>
-                    <p>Searching automotive databases...</p>
+            <div id="manufacturers" class="admin-tab-content active">
+                <h3>Manufacturers</h3>
+                <div class="admin-list" id="manufacturersList"></div>
+                <div class="admin-form">
+                    <input type="text" id="newManufacturer" placeholder="Add new manufacturer" style="margin-bottom: 10px;">
+                    <button type="button" class="btn btn-primary" id="addManufacturer">Add Manufacturer</button>
                 </div>
-                
-                <div id="content"></div>
+            </div>
+
+            <div id="models" class="admin-tab-content">
+                <h3>Models</h3>
+                <select id="modelManufacturerFilter" style="margin-bottom: 15px;">
+                    <option value="">Select manufacturer to view models</option>
+                </select>
+                <div class="admin-list" id="modelsList"></div>
+                <div class="admin-form">
+                    <select id="newModelManufacturer" style="margin-bottom: 10px;">
+                        <option value="">Select manufacturer for new model</option>
+                    </select>
+                    <input type="text" id="newModel" placeholder="Add new model" style="margin-bottom: 10px;">
+                    <button type="button" class="btn btn-primary" id="addModel">Add Model</button>
+                </div>
+            </div>
+
+            <div id="engines" class="admin-tab-content">
+                <h3>Engines</h3>
+                <select id="engineManufacturerFilter" style="margin-bottom: 10px;">
+                    <option value="">Select manufacturer</option>
+                </select>
+                <select id="engineModelFilter" style="margin-bottom: 15px;" disabled>
+                    <option value="">Select model</option>
+                </select>
+                <div class="admin-list" id="enginesList"></div>
+                <div class="admin-form">
+                    <select id="newEngineManufacturer" style="margin-bottom: 10px;">
+                        <option value="">Select manufacturer for new engine</option>
+                    </select>
+                    <select id="newEngineModel" style="margin-bottom: 10px;" disabled>
+                        <option value="">Select model for new engine</option>
+                    </select>
+                    <input type="text" id="newEngineName" placeholder="Engine name (e.g., 5.7L V8 Hemi)" style="margin-bottom: 10px;">
+                    <input type="text" id="newEngineSpecs" placeholder="Timing specs (e.g., 10° BTDC @ idle)" style="margin-bottom: 10px;">
+                    <textarea id="newEngineNotes" placeholder="Additional notes..." rows="3" style="width: 100%; margin-bottom: 10px; padding: 10px; border: 2px solid #e1e5e9; border-radius: 10px; resize: vertical;"></textarea>
+                    <button type="button" class="btn btn-primary" id="addEngine">Add Engine</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // PWA variables
-        let deferredPrompt;
-        
-        // PWA Install Prompt
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installPrompt').style.display = 'block';
-        });
+        // Data Management
+        class DataManager {
+            constructor() {
+                this.manufacturers = [];
+                this.models = [];
+                this.engines = [];
+                this.loadData();
+            }
 
-        document.getElementById('installBtn').addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    document.getElementById('installPrompt').style.display = 'none';
+            loadData() {
+                try {
+                    // Load from local storage or initialize with default data
+                    const savedManufacturers = localStorage.getItem('auto-timing-manufacturers');
+                    const savedModels = localStorage.getItem('auto-timing-models');
+                    const savedEngines = localStorage.getItem('auto-timing-engines');
+
+                    if (savedManufacturers && savedModels && savedEngines) {
+                        this.manufacturers = JSON.parse(savedManufacturers);
+                        this.models = JSON.parse(savedModels);
+                        this.engines = JSON.parse(savedEngines);
+                    } else {
+                        this.initializeDefaultData();
+                    }
+                } catch (error) {
+                    console.error('Error loading data:', error);
+                    this.initializeDefaultData();
                 }
-                deferredPrompt = null;
             }
-        });
 
-        window.addEventListener('appinstalled', () => {
-            document.getElementById('installPrompt').style.display = 'none';
-        });
+            initializeDefaultData() {
+                this.manufacturers = [
+                    { id: 1, name: "Chevrolet" },
+                    { id: 2, name: "Ford" },
+                    { id: 3, name: "Dodge" },
+                    { id: 4, name: "Toyota" },
+                    { id: 5, name: "Honda" }
+                ];
 
-        // Offline/Online Status
-        function updateOnlineStatus() {
-            const indicator = document.getElementById('offlineIndicator');
-            if (navigator.onLine) {
-                indicator.style.display = 'none';
-            } else {
-                indicator.style.display = 'block';
+                this.models = [
+                    { id: 1, manufacturerId: 1, name: "Silverado" },
+                    { id: 2, manufacturerId: 1, name: "Camaro" },
+                    { id: 3, manufacturerId: 2, name: "F-150" },
+                    { id: 4, manufacturerId: 2, name: "Mustang" },
+                    { id: 5, manufacturerId: 3, name: "Ram 1500" },
+                    { id: 6, manufacturerId: 4, name: "Camry" },
+                    { id: 7, manufacturerId: 5, name: "Civic" }
+                ];
+
+                this.engines = [
+                    { 
+                        id: 1, 
+                        manufacturerId: 1, 
+                        modelId: 1, 
+                        name: "5.3L V8", 
+                        specs: "0° TDC @ idle, 32° @ 2500 RPM",
+                        notes: "LS based engine, use distributor timing"
+                    },
+                    { 
+                        id: 2, 
+                        manufacturerId: 2, 
+                        modelId: 3, 
+                        name: "5.0L V8", 
+                        specs: "10° BTDC @ idle, advance curve varies",
+                        notes: "Coyote engine, electronic timing control"
+                    },
+                    { 
+                        id: 3, 
+                        manufacturerId: 3, 
+                        modelId: 5, 
+                        name: "5.7L V8 Hemi", 
+                        specs: "12° BTDC @ idle",
+                        notes: "Variable cam timing, use scanner for verification"
+                    }
+                ];
+
+                this.saveData();
             }
-        }
 
-        window.addEventListener('online', updateOnlineStatus);
-        window.addEventListener('offline', updateOnlineStatus);
-        updateOnlineStatus();
-
-        // Engine database
-        const engineDatabase = {
-            'HONDA_ACCORD': {
-                '1998-2002': [
-                    { code: 'F23A1', description: '2.3L 4-Cylinder VTEC (F23A1)' },
-                    { code: 'J30A1', description: '3.0L V6 VTEC (J30A1)' }
-                ],
-                '2003-2007': [
-                    { code: 'K24A4', description: '2.4L 4-Cylinder i-VTEC (K24A4)' },
-                    { code: 'J30A5', description: '3.0L V6 VTEC (J30A5)' }
-                ],
-                '2008-2012': [
-                    { code: 'K24Z3', description: '2.4L 4-Cylinder i-VTEC (K24Z3)' },
-                    { code: 'J35Z2', description: '3.5L V6 VTEC (J35Z2)' }
-                ]
-            },
-            'HONDA_CIVIC': {
-                '2001-2005': [
-                    { code: 'D17A1', description: '1.7L 4-Cylinder VTEC (D17A1)' },
-                    { code: 'D17A2', description: '1.7L 4-Cylinder VTEC-E (D17A2)' }
-                ],
-                '2006-2011': [
-                    { code: 'R18A1', description: '1.8L 4-Cylinder i-VTEC (R18A1)' },
-                    { code: 'K20Z3', description: '2.0L 4-Cylinder i-VTEC (K20Z3) - Si' }
-                ]
-            },
-            'TOYOTA_CAMRY': {
-                '1997-2001': [
-                    { code: '5SFE', description: '2.2L 4-Cylinder (5S-FE)' },
-                    { code: '1MZFE', description: '3.0L V6 (1MZ-FE)' }
-                ],
-                '2002-2006': [
-                    { code: '2AZFE', description: '2.4L 4-Cylinder (2AZ-FE)' },
-                    { code: '1MZFE', description: '3.0L V6 (1MZ-FE)' }
-                ],
-                '2007-2011': [
-                    { code: '2AZFE', description: '2.4L 4-Cylinder (2AZ-FE)' },
-                    { code: '2GRFE', description: '3.5L V6 (2GR-FE)' }
-                ]
-            },
-            'SUBARU_OUTBACK': {
-                '2000-2004': [
-                    { code: 'EJ251', description: '2.5L 4-Cylinder SOHC (EJ251)' },
-                    { code: 'EJ254', description: '2.5L 4-Cylinder Turbo (EJ254)' }
-                ],
-                '2005-2009': [
-                    { code: 'EJ253', description: '2.5L 4-Cylinder SOHC (EJ253)' },
-                    { code: 'EJ255', description: '2.5L 4-Cylinder Turbo (EJ255)' }
-                ],
-                '2010-2014': [
-                    { code: 'FB25', description: '2.5L 4-Cylinder DOHC (FB25)' }
-                ]
-            },
-            'FORD_F150': {
-                '2004-2010': [
-                    { code: '4.6L_2V', description: '4.6L V8 2-Valve (Triton)' },
-                    { code: '5.4L_3V', description: '5.4L V8 3-Valve (Triton)' }
-                ],
-                '2011-2016': [
-                    { code: '3.7L_V6', description: '3.7L V6 (Cyclone)' },
-                    { code: '5.0L_V8', description: '5.0L V8 (Coyote)' },
-                    { code: '3.5L_EB', description: '3.5L V6 EcoBoost' }
-                ]
-            },
-            'NISSAN_ALTIMA': {
-                '2002-2018': [
-                    { code: 'QR25DE', description: '2.5L 4-Cylinder DOHC (QR25DE)' },
-                    { code: 'VQ35DE', description: '3.5L V6 DOHC (VQ35DE)' }
-                ]
+            saveData() {
+                try {
+                    localStorage.setItem('auto-timing-manufacturers', JSON.stringify(this.manufacturers));
+                    localStorage.setItem('auto-timing-models', JSON.stringify(this.models));
+                    localStorage.setItem('auto-timing-engines', JSON.stringify(this.engines));
+                } catch (error) {
+                    console.error('Error saving data:', error);
+                }
             }
-        };
 
-        // Engine timing data
-        const engineData = {
-            'F23A1': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.3L VTEC engine uses timing belt. Critical service!' },
-            'J30A1': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '3.0L V6 VTEC engine uses timing belt. Interference design.' },
-            'K24A4': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '2.4L i-VTEC switched to timing chain in 2003.' },
-            'J30A5': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '3.0L V6 continued with timing belt through 2007.' },
-            'K24Z3': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '2.4L i-VTEC with timing chain and VTC system.' },
-            'J35Z2': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '3.5L V6 VTEC - last Honda V6 with timing belt.' },
-            'D17A1': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '1.7L VTEC engine. All D-series are interference.' },
-            'R18A1': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '1.8L i-VTEC switched to timing chain in 2006.' },
-            '5SFE': { timing: 'Timing Belt', interference: false, interval: '90,000 miles or 6 years', notes: '2.2L 5S-FE is non-interference. Replace belt on schedule.' },
-            '1MZFE': { timing: 'Timing Belt', interference: true, interval: '90,000 miles or 6 years', notes: '3.0L 1MZ-FE V6 is interference. Critical timing belt service!' },
-            '2AZFE': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '2.4L 2AZ-FE switched to timing chain in 2002.' },
-            '2GRFE': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '3.5L 2GR-FE V6 uses timing chain.' },
-            'EJ251': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.5L SOHC boxer engine. ALL Subaru engines are interference!' },
-            'EJ254': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.5L Turbo boxer engine. Critical timing belt service!' },
-            'EJ253': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.5L SOHC boxer engine. Interference design.' },
-            'EJ255': { timing: 'Timing Belt', interference: true, interval: '105,000 miles or 7 years', notes: '2.5L Turbo boxer engine with timing belt.' },
-            'FB25': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '2.5L FB engine finally switched to timing chain in 2010.' },
-            '4.6L_2V': { timing: 'Timing Chain', interference: false, interval: 'Lifetime service', notes: '4.6L Triton V8 2-valve. Non-interference with timing chain.' },
-            '5.4L_3V': { timing: 'Timing Chain', interference: false, interval: 'Lifetime service', notes: '5.4L Triton V8 3-valve. Known for chain stretch issues.' },
-            '5.0L_V8': { timing: 'Timing Chain', interference: false, interval: 'Lifetime service', notes: '5.0L Coyote V8. Modern chain-driven engine.' },
-            '3.5L_EB': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: '3.5L EcoBoost V6. Twin-turbo interference engine.' },
-            'QR25DE': { timing: 'Timing Chain', interference: true, interval: 'Inspect at 120,000 miles', notes: 'QR25DE notorious for timing chain stretch. Monitor noise!' },
-            'VQ35DE': { timing: 'Timing Chain', interference: true, interval: 'Lifetime service', notes: 'VQ35DE V6 uses timing chain. Generally reliable.' }
-        };
-
-        function updateEngineOptions() {
-            const year = document.getElementById('year').value;
-            const make = document.getElementById('make').value.trim();
-            const model = document.getElementById('model').value.trim();
-            const engineGroup = document.getElementById('engineGroup');
-            const engineSelect = document.getElementById('engine');
-            
-            if (!year || !make || !model) {
-                engineGroup.style.display = 'none';
-                return;
+            getManufacturers() {
+                return this.manufacturers.sort((a, b) => a.name.localeCompare(b.name));
             }
-            
-            const engines = getEngineOptions(year, make, model);
-            
-            if (engines.length > 0) {
-                engineSelect.innerHTML = '<option value="">Select Engine...</option>';
-                engines.forEach(engine => {
-                    engineSelect.innerHTML += `<option value="${engine.code}">${engine.description}</option>`;
+
+            getModels(manufacturerId) {
+                return this.models.filter(model => model.manufacturerId == manufacturerId)
+                    .sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            getEngines(manufacturerId, modelId) {
+                return this.engines.filter(engine => 
+                    engine.manufacturerId == manufacturerId && engine.modelId == modelId
+                ).sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            addManufacturer(name) {
+                const id = Math.max(0, ...this.manufacturers.map(m => m.id)) + 1;
+                this.manufacturers.push({ id, name });
+                this.saveData();
+                return id;
+            }
+
+            addModel(manufacturerId, name) {
+                const id = Math.max(0, ...this.models.map(m => m.id)) + 1;
+                this.models.push({ id, manufacturerId: parseInt(manufacturerId), name });
+                this.saveData();
+                return id;
+            }
+
+            addEngine(manufacturerId, modelId, name, specs, notes) {
+                const id = Math.max(0, ...this.engines.map(e => e.id)) + 1;
+                this.engines.push({ 
+                    id, 
+                    manufacturerId: parseInt(manufacturerId), 
+                    modelId: parseInt(modelId), 
+                    name, 
+                    specs, 
+                    notes 
                 });
-                engineGroup.style.display = 'block';
+                this.saveData();
+                return id;
+            }
+
+            deleteManufacturer(id) {
+                this.manufacturers = this.manufacturers.filter(m => m.id != id);
+                this.models = this.models.filter(m => m.manufacturerId != id);
+                this.engines = this.engines.filter(e => e.manufacturerId != id);
+                this.saveData();
+            }
+
+            deleteModel(id) {
+                this.models = this.models.filter(m => m.id != id);
+                this.engines = this.engines.filter(e => e.modelId != id);
+                this.saveData();
+            }
+
+            deleteEngine(id) {
+                this.engines = this.engines.filter(e => e.id != id);
+                this.saveData();
+            }
+        }
+
+        // App initialization
+        const dataManager = new DataManager();
+        let deferredPrompt;
+
+        // DOM elements
+        const elements = {
+            year: document.getElementById('year'),
+            make: document.getElementById('make'),
+            model: document.getElementById('model'),
+            engine: document.getElementById('engine'),
+            searchBtn: document.getElementById('searchBtn'),
+            clearBtn: document.getElementById('clearBtn'),
+            adminBtn: document.getElementById('adminBtn'),
+            results: document.getElementById('results'),
+            timingData: document.getElementById('timingData'),
+            adminModal: document.getElementById('adminModal'),
+            installPrompt: document.getElementById('installPrompt'),
+            installBtn: document.getElementById('installBtn'),
+            statusBar: document.getElementById('statusBar')
+        };
+
+        // Initialize app
+        function init() {
+            setupEventListeners();
+            populateManufacturers();
+            updateOnlineStatus();
+            setupPWA();
+        }
+
+        function setupEventListeners() {
+            // Form events
+            elements.make.addEventListener('change', onMakeChange);
+            elements.model.addEventListener('change', onModelChange);
+            elements.searchBtn.addEventListener('click', onSearch);
+            elements.clearBtn.addEventListener('click', onClear);
+            elements.adminBtn.addEventListener('click', openAdminModal);
+
+            // Modal events
+            document.querySelector('.close').addEventListener('click', closeAdminModal);
+            window.addEventListener('click', (e) => {
+                if (e.target === elements.adminModal) closeAdminModal();
+            });
+
+            // Admin tab events
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.addEventListener('click', () => switchAdminTab(tab.dataset.tab));
+            });
+
+            // Admin functionality
+            setupAdminEventListeners();
+
+            // Online/offline events
+            window.addEventListener('online', updateOnlineStatus);
+            window.addEventListener('offline', updateOnlineStatus);
+
+            // Prevent form submission
+            document.getElementById('timingForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                onSearch();
+            });
+        }
+
+        function setupAdminEventListeners() {
+            // Manufacturer events
+            document.getElementById('addManufacturer').addEventListener('click', addManufacturer);
+            
+            // Model events
+            document.getElementById('addModel').addEventListener('click', addModel);
+            document.getElementById('modelManufacturerFilter').addEventListener('change', filterModels);
+            document.getElementById('newModelManufacturer').addEventListener('change', updateModelForm);
+            
+            // Engine events
+            document.getElementById('addEngine').addEventListener('click', addEngine);
+            document.getElementById('engineManufacturerFilter').addEventListener('change', filterEnginesByManufacturer);
+            document.getElementById('engineModelFilter').addEventListener('change', filterEngines);
+            document.getElementById('newEngineManufacturer').addEventListener('change', updateEngineModelOptions);
+        }
+
+        function populateManufacturers() {
+            const makes = dataManager.getManufacturers();
+            elements.make.innerHTML = '<option value="">Select Make...</option>';
+            
+            makes.forEach(make => {
+                const option = document.createElement('option');
+                option.value = make.id;
+                option.textContent = make.name;
+                elements.make.appendChild(option);
+            });
+        }
+
+        function onMakeChange() {
+            const manufacturerId = elements.make.value;
+            elements.model.disabled = !manufacturerId;
+            elements.engine.disabled = true;
+            
+            if (manufacturerId) {
+                populateModels(manufacturerId);
             } else {
-                engineGroup.style.display = 'none';
+                elements.model.innerHTML = '<option value="">Select Model...</option>';
+                elements.engine.innerHTML = '<option value="">Select Engine...</option>';
             }
         }
 
-        function getEngineOptions(year, make, model) {
-            const makeUpper = make.toUpperCase();
-            const modelUpper = model.toUpperCase();
-            const yearNum = parseInt(year);
+        function populateModels(manufacturerId) {
+            const models = dataManager.getModels(manufacturerId);
+            elements.model.innerHTML = '<option value="">Select Model...</option>';
             
-            const key = `${makeUpper}_${modelUpper}`;
-            const vehicleEngines = engineDatabase[key];
-            
-            if (!vehicleEngines) {
-                return [];
-            }
-            
-            for (const yearRange in vehicleEngines) {
-                const [startYear, endYear] = yearRange.split('-').map(y => parseInt(y));
-                if (yearNum >= startYear && yearNum <= endYear) {
-                    return vehicleEngines[yearRange];
-                }
-            }
-            
-            return [];
+            models.forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.id;
+                option.textContent = model.name;
+                elements.model.appendChild(option);
+            });
         }
 
-        function searchTiming() {
-            const year = document.getElementById('year').value;
-            const make = document.getElementById('make').value.trim();
-            const model = document.getElementById('model').value.trim();
-            const engineSelect = document.getElementById('engine');
-            const engine = engineSelect.value;
+        function onModelChange() {
+            const manufacturerId = elements.make.value;
+            const modelId = elements.model.value;
+            elements.engine.disabled = !modelId;
             
-            if (!year || !make || !model) {
-                alert('Please fill in Year, Make, and Model');
-                return;
+            if (modelId) {
+                populateEngines(manufacturerId, modelId);
+            } else {
+                elements.engine.innerHTML = '<option value="">Select Engine...</option>';
             }
-            
-            // Check if engine dropdown is visible and has options
-            const engineGroup = document.getElementById('engineGroup');
-            if (engineGroup.style.display === 'none' || engineSelect.options.length <= 1) {
-                // No engines available for this vehicle
-                showVehicleNotFound(year, make, model);
-                return;
-            }
-            
-            if (!engine) {
-                alert('Please select an engine option');
-                return;
-            }
-            
-            const results = document.getElementById('results');
-            const loading = document.getElementById('loading');
-            const content = document.getElementById('content');
-            
-            results.classList.add('show');
-            loading.style.display = 'block';
-            content.innerHTML = '';
-            
-            setTimeout(() => {
-                loading.style.display = 'none';
-                showResults(year, make, model, engine);
-            }, 1500);
         }
 
-        function showVehicleNotFound(year, make, model) {
-            const results = document.getElementById('results');
-            const loading = document.getElementById('loading');
-            const content = document.getElementById('content');
+        function populateEngines(manufacturerId, modelId) {
+            const engines = dataManager.getEngines(manufacturerId, modelId);
+            elements.engine.innerHTML = '<option value="">Select Engine...</option>';
             
-            results.classList.add('show');
-            loading.style.display = 'none';
+            engines.forEach(engine => {
+                const option = document.createElement('option');
+                option.value = engine.id;
+                option.textContent = engine.name;
+                elements.engine.appendChild(option);
+            });
+        }
+
+        function onSearch() {
+            if (!elements.year.value || !elements.make.value || !elements.model.value || !elements.engine.value) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const engineId = elements.engine.value;
+            const engine = dataManager.engines.find(e => e.id == engineId);
             
-            content.innerHTML = `
-                <div class="vehicle-info">
-                    🚗 ${year} ${make} ${model}
+            if (engine) {
+                displayResults(engine);
+            } else {
+                displayError('Engine data not found');
+            }
+        }
+
+        function displayResults(engine) {
+            const manufacturer = dataManager.manufacturers.find(m => m.id === engine.manufacturerId);
+            const model = dataManager.models.find(m => m.id === engine.modelId);
+            
+            elements.timingData.innerHTML = `
+                <div class="timing-info">
+                    <strong>Vehicle:</strong> ${elements.year.value} ${manufacturer.name} ${model.name}
                 </div>
-                
-                <div class="result-item" style="border-left-color: #e67e22;">
-                    <div class="result-title">⚠️ Vehicle Not Found</div>
-                    <div class="result-value" style="background: #ffeaa7; color: #e17055;">
-                        This vehicle is not in our current database.
+                <div class="timing-info">
+                    <strong>Engine:</strong> ${engine.name}
+                </div>
+                <div class="timing-info">
+                    <strong>Timing Specification:</strong> ${engine.specs}
+                </div>
+                ${engine.notes ? `
+                    <div class="timing-info">
+                        <strong>Notes:</strong> ${engine.notes}
                     </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="result-title">📋 Current Database Includes</div>
-                    <div class="result-value" style="background: #f8f9fa; color: #495057;">
-                        • Honda Accord (1998-2012)<br>
-                        • Honda Civic (2001-2015)<br>
-                        • Toyota Camry (1997-2017)<br>
-                        • Subaru Outback (2000-2014)<br>
-                        • Ford F-150 (2004-2016)<br>
-                        • Nissan Altima (2002-2018)
-                    </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="result-title">🔧 Recommendation</div>
-                    <div class="result-value" style="background: #e3f2fd; color: #1565c0;">
-                        Please consult your service manual for timing information on this vehicle.
-                    </div>
-                </div>
+                ` : ''}
             `;
-        }
-
-        function clearForm() {
-            document.getElementById('year').value = '';
-            document.getElementById('make').value = '';
-            document.getElementById('model').value = '';
-            document.getElementById('engine').value = '';
-            document.getElementById('engineGroup').style.display = 'none';
-            document.getElementById('results').classList.remove('show');
-        }
-
-        function showResults(year, make, model, engineCode) {
-            const content = document.getElementById('content');
-            const data = getVehicleData(engineCode);
             
-            const engineSelect = document.getElementById('engine');
-            const selectedOption = engineSelect.options[engineSelect.selectedIndex];
-            const engineDesc = selectedOption ? selectedOption.text : engineCode;
+            elements.results.style.display = 'block';
+            elements.results.scrollIntoView({ behavior: 'smooth' });
+        }
 
-            let warningHtml = '';
-            if (data.warning) {
-                warningHtml = `
-                    <div class="warning">
-                        <div class="result-title">⚠️ Critical Warning</div>
-                        <div class="result-value">${data.warning}</div>
-                    </div>
+        function displayError(message) {
+            elements.timingData.innerHTML = `<div class="error">${message}</div>`;
+            elements.results.style.display = 'block';
+        }
+
+        function onClear() {
+            elements.year.value = '';
+            elements.make.value = '';
+            elements.model.value = '';
+            elements.engine.value = '';
+            elements.model.disabled = true;
+            elements.engine.disabled = true;
+            elements.results.style.display = 'none';
+            
+            elements.model.innerHTML = '<option value="">Select Model...</option>';
+            elements.engine.innerHTML = '<option value="">Select Engine...</option>';
+        }
+
+        // Admin Panel Functions
+        function openAdminModal() {
+            elements.adminModal.style.display = 'block';
+            refreshAdminData();
+        }
+
+        function closeAdminModal() {
+            elements.adminModal.style.display = 'none';
+        }
+
+        function switchAdminTab(tabName) {
+            document.querySelectorAll('.admin-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.admin-tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+            
+            refreshAdminData();
+        }
+
+        function refreshAdminData() {
+            refreshManufacturersList();
+            refreshModelsList();
+            refreshEnginesList();
+            refreshAdminDropdowns();
+        }
+
+        function refreshManufacturersList() {
+            const list = document.getElementById('manufacturersList');
+            list.innerHTML = '';
+            
+            dataManager.getManufacturers().forEach(manufacturer => {
+                const item = document.createElement('div');
+                item.className = 'admin-item';
+                item.innerHTML = `
+                    <span>${manufacturer.name}</span>
+                    <button class="delete-btn" onclick="deleteManufacturer(${manufacturer.id})">Delete</button>
                 `;
-            }
-            
-            content.innerHTML = `
-                <div class="vehicle-info">
-                    🚗 ${year} ${make} ${model}<br>
-                    <span style="font-size: 0.9em; opacity: 0.9;">Engine: ${engineDesc}</span>
-                </div>
-                
-                ${warningHtml}
-                
-                <div class="result-item ${data.timingClass}">
-                    <div class="result-title">⚙️ Timing System</div>
-                    <div class="result-value ${data.timingClass}">${data.timing}</div>
-                </div>
-                
-                <div class="result-item ${data.engineClass}">
-                    <div class="result-title">🔧 Engine Type</div>
-                    <div class="result-value ${data.engineClass}">${data.engine}</div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="result-title">📅 Service Interval</div>
-                    <div class="result-value" style="background: #fff3e0; color: #ef6c00; font-weight: 600;">
-                        ${data.interval}
-                    </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="result-title">📝 Service Notes</div>
-                    <div class="result-value" style="background: #f8f9fa; color: #495057;">
-                        ${data.notes}
-                    </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="result-title">🎯 Data Confidence</div>
-                    <div class="result-value" style="background: ${data.confidence === 'High' ? '#e8f5e8' : '#fff3e0'}; color: ${data.confidence === 'High' ? '#2e7d32' : '#ef6c00'};">
-                        ${data.confidence}
-                    </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="result-title">ℹ️ Important</div>
-                    <div class="result-value" style="background: #e3f2fd; color: #1565c0;">
-                        Always verify with manufacturer specifications and service manuals for critical repair decisions.
-                    </div>
-                </div>
-            `;
+                list.appendChild(item);
+            });
         }
 
-        function getVehicleData(engineCode) {
-            const engine = engineData[engineCode];
+        function refreshModelsList() {
+            const filter = document.getElementById('modelManufacturerFilter').value;
+            const list = document.getElementById('modelsList');
+            list.innerHTML = '';
             
-            if (!engine) {
-                return {
-                    timing: 'Unknown',
-                    engine: 'Unknown',
-                    interval: 'Verify with service manual',
-                    notes: 'Engine-specific data not available. Consult manufacturer specifications.',
-                    confidence: 'Low',
-                    warning: null,
-                    timingClass: 'unknown',
-                    engineClass: 'unknown'
-                };
+            if (!filter) {
+                list.innerHTML = '<div class="admin-item">Select a manufacturer to view models</div>';
+                return;
             }
-
-            const warning = engine.timing === 'Timing Belt' && engine.interference ? 
-                'CRITICAL: Timing belt failure will cause severe engine damage!' : null;
-
-            return {
-                timing: engine.timing,
-                engine: engine.interference ? 'Interference Engine' : 'Non-Interference Engine',
-                interval: engine.interval,
-                notes: engine.notes,
-                confidence: 'High',
-                warning: warning,
-                timingClass: engine.timing.toLowerCase().replace(' ', '-'),
-                engineClass: engine.interference ? 'interference' : 'non-interference'
-            };
+            
+            const models = dataManager.getModels(filter);
+            const manufacturer = dataManager.manufacturers.find(m => m.id == filter);
+            
+            models.forEach(model => {
+                const item = document.createElement('div');
+                item.className = 'admin-item';
+                item.innerHTML = `
+                    <span>${model.name} (${manufacturer.name})</span>
+                    <button class="delete-btn" onclick="deleteModel(${model.id})">Delete</button>
+                `;
+                list.appendChild(item);
+            });
+            
+            if (models.length === 0) {
+                list.innerHTML = '<div class="admin-item">No models found for this manufacturer</div>';
+            }
         }
 
-        // Auto-capitalize inputs and trigger engine update
-        document.getElementById('make').addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/\b\w/g, c => c.toUpperCase());
-            updateEngineOptions();
-        });
-
-        document.getElementById('model').addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/\b\w/g, c => c.toUpperCase());
-            updateEngineOptions();
-        });
-
-        document.getElementById('year').addEventListener('input', function(e) {
-            updateEngineOptions();
-        });
-
-        // Allow Enter key to submit
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchTiming();
+        function refreshEnginesList() {
+            const manufacturerFilter = document.getElementById('engineManufacturerFilter').value;
+            const modelFilter = document.getElementById('engineModelFilter').value;
+            const list = document.getElementById('enginesList');
+            list.innerHTML = '';
+            
+            if (!manufacturerFilter || !modelFilter) {
+                list.innerHTML = '<div class="admin-item">Select manufacturer and model to view engines</div>';
+                return;
             }
-        });
+            
+            const engines = dataManager.getEngines(manufacturerFilter, modelFilter);
+            const manufacturer = dataManager.manufacturers.find(m => m.id == manufacturerFilter);
+            const model = dataManager.models.find(m => m.id == modelFilter);
+            
+            engines.forEach(engine => {
+                const item = document.createElement('div');
+                item.className = 'admin-item';
+                item.innerHTML = `
+                    <div>
+                        <strong>${engine.name}</strong><br>
+                        <small>${manufacturer.name} ${model.name}</small><br>
+                        <small>Specs: ${engine.specs}</small>
+                        ${engine.notes ? `<br><small>Notes: ${engine.notes}</small>` : ''}
+                    </div>
+                    <button class="delete-btn" onclick="deleteEngine(${engine.id})">Delete</button>
+                `;
+                list.appendChild(item);
+            });
+            
+            if (engines.length === 0) {
+                list.innerHTML = '<div class="admin-item">No engines found for this model</div>';
+            }
+        }
+
+        function refreshAdminDropdowns() {
+            // Refresh manufacturer dropdowns
+            const manufacturers = dataManager.getManufacturers();
+            const manufacturerSelects = [
+                'modelManufacturerFilter',
+                'newModelManufacturer',
+                'engineManufacturerFilter',
+                'newEngineManufacturer'
+            ];
+            
+            manufacturerSelects.forEach(selectId => {
+                const select = document.getElementById(selectId);
+                const currentValue = select.value;
+                select.innerHTML = '<option value="">Select manufacturer</option>';
+                
+                manufacturers.forEach(manufacturer => {
+                    const option = document.createElement('option');
+                    option.value = manufacturer.id;
+                    option.textContent = manufacturer.name;
+                    select.appendChild(option);
+                });
+                
+                if (currentValue) select.value = currentValue;
+            });
+            
+            // Refresh main form manufacturers
+            populateManufacturers();
+        }
+
+        // Admin CRUD Functions
+        function addManufacturer() {
+            const input = document.getElementById('newManufacturer');
+            const name = input.value.trim();
+            
+            if (!name) {
+                alert('Please enter a manufacturer name');
+                return;
+            }
+            
+            if (dataManager.manufacturers.some(m => m.name.toLowerCase() === name.toLowerCase())) {
+                alert('Manufacturer already exists');
+                return;
+            }
+            
+            dataManager.addManufacturer(name);
+            input.value = '';
+            refreshAdminData();
+        }
+
+        function addModel() {
+            const manufacturerSelect = document.getElementById('newModelManufacturer');
+            const input = document.getElementById('newModel');
+            const manufacturerId = manufacturerSelect.value;
+            const name = input.value.trim();
+            
+            if (!manufacturerId || !name) {
+                alert('Please select a manufacturer and enter a model name');
+                return;
+            }
+            
+            if (dataManager.models.some(m => 
+                m.manufacturerId == manufacturerId && 
+                m.name.toLowerCase() === name.toLowerCase()
+            )) {
+                alert('Model already exists for this manufacturer');
+                return;
+            }
+            
+            dataManager.addModel(manufacturerId, name);
+            input.value = '';
+            refreshAdminData();
+        }
+
+        function addEngine() {
+            const manufacturerSelect = document.getElementById('newEngineManufacturer');
+            const modelSelect = document.getElementById('newEngineModel');
+            const nameInput = document.getElementById('newEngineName');
+            const specsInput = document.getElementById('newEngineSpecs');
+            const notesInput = document.getElementById('newEngineNotes');
+            
+            const manufacturerId = manufacturerSelect.value;
+            const modelId = modelSelect.value;
+            const name = nameInput.value.trim();
+            const specs = specsInput.value.trim();
+            const notes = notesInput.value.trim();
+            
+            if (!manufacturerId || !modelId || !name || !specs) {
+                alert('Please fill in all required fields (manufacturer, model, engine name, and specs)');
+                return;
+            }
+            
+            if (dataManager.engines.some(e => 
+                e.manufacturerId == manufacturerId && 
+                e.modelId == modelId && 
+                e.name.toLowerCase() === name.toLowerCase()
+            )) {
+                alert('Engine already exists for this manufacturer and model');
+                return;
+            }
+            
+            dataManager.addEngine(manufacturerId, modelId, name, specs, notes);
+            nameInput.value = '';
+            specsInput.value = '';
+            notesInput.value = '';
+            refreshAdminData();
+        }
+
+        function deleteManufacturer(id) {
+            if (confirm('This will delete the manufacturer and all associated models and engines. Continue?')) {
+                dataManager.deleteManufacturer(id);
+                refreshAdminData();
+            }
+        }
+
+        function deleteModel(id) {
+            if (confirm('This will delete the model and all associated engines. Continue?')) {
+                dataManager.deleteModel(id);
+                refreshAdminData();
+            }
+        }
+
+        function deleteEngine(id) {
+            if (confirm('Delete this engine?')) {
+                dataManager.deleteEngine(id);
+                refreshAdminData();
+            }
+        }
+
+        // Admin Filter Functions
+        function filterModels() {
+            refreshModelsList();
+        }
+
+        function updateModelForm() {
+            // This function can be used to update model form state if needed
+            refreshModelsList();
+        }
+
+        function filterEnginesByManufacturer() {
+            const manufacturerId = document.getElementById('engineManufacturerFilter').value;
+            const modelSelect = document.getElementById('engineModelFilter');
+            
+            modelSelect.disabled = !manufacturerId;
+            modelSelect.innerHTML = '<option value="">Select model</option>';
+            
+            if (manufacturerId) {
+                const models = dataManager.getModels(manufacturerId);
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model.id;
+                    option.textContent = model.name;
+                    modelSelect.appendChild(option);
+                });
+            }
+            
+            refreshEnginesList();
+        }
+
+        function filterEngines() {
+            refreshEnginesList();
+        }
+
+        function updateEngineModelOptions() {
+            const manufacturerId = document.getElementById('newEngineManufacturer').value;
+            const modelSelect = document.getElementById('newEngineModel');
+            
+            modelSelect.disabled = !manufacturerId;
+            modelSelect.innerHTML = '<option value="">Select model</option>';
+            
+            if (manufacturerId) {
+                const models = dataManager.getModels(manufacturerId);
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model.id;
+                    option.textContent = model.name;
+                    modelSelect.appendChild(option);
+                });
+            }
+        }
+
+        // PWA Functions
+        function setupPWA() {
+            // Register service worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            }
+
+            // Handle install prompt
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                elements.installPrompt.style.display = 'block';
+            });
+
+            elements.installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                    elements.installPrompt.style.display = 'none';
+                }
+            });
+
+            window.addEventListener('appinstalled', () => {
+                elements.installPrompt.style.display = 'none';
+            });
+        }
+
+        function updateOnlineStatus() {
+            if (navigator.onLine) {
+                elements.statusBar.innerHTML = '📶 Online Mode - Live data available';
+                elements.statusBar.style.background = 'rgba(76, 175, 80, 0.2)';
+            } else {
+                elements.statusBar.innerHTML = '📱 Offline Mode - Using cached data';
+                elements.statusBar.style.background = 'rgba(255, 152, 0, 0.2)';
+            }
+        }
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Export functions for global access (needed for inline event handlers)
+        window.deleteManufacturer = deleteManufacturer;
+        window.deleteModel = deleteModel;
+        window.deleteEngine = deleteEngine;
     </script>
 </body>
-</html> '
+</html>
