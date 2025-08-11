@@ -1,0 +1,111 @@
+{
+  "FORTE": {
+    "2010-2013": [
+      { "code": "G4FA", "description": "2.0L 4-Cyl GDI (G4FA)" },
+      { "code": "G4FG", "description": "2.4L 4-Cyl GDI (G4FG)" }
+    ],
+    "2014-2018": [
+      { "code": "G4FG", "description": "1.8L 4-Cyl GDI (G4FG)" },
+      { "code": "G4FA", "description": "2.0L 4-Cyl GDI (G4FA)" }
+    ],
+    "2019-2020": [
+      { "code": "G4LC", "description": "2.0L 4-Cyl GDI (G4LC)" }
+    ]
+  },
+  "OPTIMA": {
+    "2001-2006": [
+      { "code": "G4JS", "description": "2.4L 4-Cyl DOHC (G4JS)" },
+      { "code": "G6BA", "description": "2.7L V6 DOHC (G6BA)" }
+    ],
+    "2007-2010": [
+      { "code": "G4KC", "description": "2.4L 4-Cyl DOHC (G4KC)" },
+      { "code": "G6DB", "description": "2.7L V6 DOHC (G6DB)" }
+    ],
+    "2011-2015": [
+      { "code": "G4KD", "description": "2.0L 4-Cyl Turbo GDI (G4KD)" },
+      { "code": "G4KA", "description": "2.4L 4-Cyl GDI (G4KA)" }
+    ],
+    "2016-2020": [
+      { "code": "G4KJ", "description": "1.6L 4-Cyl Turbo GDI (G4KJ)" },
+      { "code": "G4KA", "description": "2.4L 4-Cyl GDI (G4KA)" }
+    ]
+  },
+  "RIO": {
+    "2001-2005": [
+      { "code": "A5D", "description": "1.5L 4-Cyl SOHC (A5D)" },
+      { "code": "A6D", "description": "1.6L 4-Cyl DOHC (A6D)" }
+    ],
+    "2006-2011": [
+      { "code": "G4ED", "description": "1.6L 4-Cyl DOHC (G4ED)" }
+    ],
+    "2012-2017": [
+      { "code": "G4FA", "description": "1.6L 4-Cyl GDI (G4FA)" }
+    ],
+    "2018-2020": [
+      { "code": "G4LC", "description": "1.6L 4-Cyl GDI (G4LC)" }
+    ]
+  },
+  "SEDONA": {
+    "2002-2005": [
+      { "code": "G6EA", "description": "3.5L V6 DOHC (G6EA)" }
+    ],
+    "2006-2014": [
+      { "code": "G6DB", "description": "3.8L V6 GDI (G6DB)" }
+    ],
+    "2015-2020": [
+      { "code": "G6DH", "description": "3.3L V6 GDI (G6DH)" }
+    ]
+  },
+  "SORENTO": {
+    "2003-2009": [
+      { "code": "G6EA", "description": "3.3L V6 DOHC (G6EA)" },
+      { "code": "G6CU", "description": "3.8L V6 DOHC (G6CU)" }
+    ],
+    "2011-2015": [
+      { "code": "G4KE", "description": "2.4L 4-Cyl GDI (G4KE)" },
+      { "code": "G6DH", "description": "3.3L V6 GDI (G6DH)" }
+    ],
+    "2016-2020": [
+      { "code": "G4KJ", "description": "2.0L 4-Cyl Turbo GDI (G4KJ)" },
+      { "code": "G4KE", "description": "2.4L 4-Cyl GDI (G4KE)" },
+      { "code": "G6DH", "description": "3.3L V6 GDI (G6DH)" }
+    ]
+  },
+  "SOUL": {
+    "2010-2013": [
+      { "code": "G4FA", "description": "1.6L 4-Cyl GDI (G4FA)" },
+      { "code": "G4FD", "description": "2.0L 4-Cyl GDI (G4FD)" }
+    ],
+    "2014-2019": [
+      { "code": "G4FA", "description": "1.6L 4-Cyl GDI (G4FA)" },
+      { "code": "G4FD", "description": "2.0L 4-Cyl GDI (G4FD)" }
+    ],
+    "2020": [
+      { "code": "G4LC", "description": "2.0L 4-Cyl GDI (G4LC)" }
+    ]
+  },
+  "SPORTAGE": {
+    "1995-2002": [
+      { "code": "FE", "description": "2.0L 4-Cyl DOHC (FE)" }
+    ],
+    "2005-2010": [
+      { "code": "G4GC", "description": "2.0L 4-Cyl DOHC (G4GC)" },
+      { "code": "G6BA", "description": "2.7L V6 DOHC (G6BA)" }
+    ],
+    "2011-2016": [
+      { "code": "G4KD", "description": "2.0L 4-Cyl GDI (G4KD)" },
+      { "code": "G4KE", "description": "2.4L 4-Cyl GDI (G4KE)" }
+    ],
+    "2017-2020": [
+      { "code": "G4FJ", "description": "1.6L 4-Cyl Turbo GDI (G4FJ)" },
+      { "code": "G4KJ", "description": "2.0L 4-Cyl GDI (G4KJ)" },
+      { "code": "G4KE", "description": "2.4L 4-Cyl GDI (G4KE)" }
+    ]
+  },
+  "STINGER": {
+    "2018-2020": [
+      { "code": "G4KJ", "description": "2.0L 4-Cyl Turbo GDI (G4KJ)" },
+      { "code": "G6DH", "description": "3.3L V6 Twin Turbo GDI (G6DH)" }
+    ]
+  }
+}
