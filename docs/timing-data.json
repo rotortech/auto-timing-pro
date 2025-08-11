@@ -1,0 +1,386 @@
+{
+  "F22A1": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "2.2L SOHC timing belt. ALL Honda F-series are interference!"
+  },
+  "F22A6": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "2.2L SOHC VTEC timing belt system."
+  },
+  "F22B1": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "2.2L SOHC timing belt engine."
+  },
+  "F22B2": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "2.2L SOHC VTEC timing belt."
+  },
+  "H22A1": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "2.2L DOHC VTEC timing belt. Critical service!"
+  },
+  "H22A4": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "2.2L DOHC VTEC timing belt."
+  },
+  "F23A1": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "2.3L VTEC timing belt system."
+  },
+  "J30A1": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.0L V6 VTEC timing belt."
+  },
+  "J30A5": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.0L V6 continued with timing belt."
+  },
+  "K24A4": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L i-VTEC switched to timing chain in 2003."
+  },
+  "K24Z3": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L i-VTEC with timing chain and VTC system."
+  },
+  "J35Z2": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.5L V6 VTEC - last Honda V6 with timing belt."
+  },
+  "K24W1": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L i-VTEC timing chain system."
+  },
+  "J35Y2": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.5L V6 VTEC timing belt."
+  },
+  "K20C4": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.5L Turbo VTEC timing chain."
+  },
+  "K24W7": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.0L Turbo VTEC timing chain."
+  },
+  "D15B7": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "1.5L SOHC timing belt. ALL Honda D-series are interference!"
+  },
+  "D15B8": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "1.5L SOHC VTEC-E timing belt."
+  },
+  "D16Z6": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "1.6L SOHC VTEC timing belt."
+  },
+  "D16Y7": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "1.6L SOHC timing belt system."
+  },
+  "D16Y8": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "1.6L SOHC VTEC timing belt."
+  },
+  "B16A2": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "1.6L DOHC VTEC timing belt. Critical service!"
+  },
+  "D17A1": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "1.7L VTEC timing belt. All D-series are interference."
+  },
+  "D17A2": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "1.7L VTEC-E timing belt system."
+  },
+  "K20A3": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.0L i-VTEC Si with timing chain."
+  },
+  "R18A1": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.8L i-VTEC switched to timing chain in 2006."
+  },
+  "K20Z3": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.0L i-VTEC Si timing chain system."
+  },
+  "R18Z1": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.8L i-VTEC timing chain."
+  },
+  "K24Z7": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L i-VTEC Si timing chain."
+  },
+  "K20C1": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.0L Turbo VTEC Si timing chain."
+  },
+  "B20B4": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "2.0L DOHC timing belt. B-series are interference engines."
+  },
+  "K24A1": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L i-VTEC timing chain system."
+  },
+  "K24Z1": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L i-VTEC timing chain."
+  },
+  "K24Z6": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L i-VTEC timing chain system."
+  },
+  "L15A7": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.5L i-VTEC timing chain."
+  },
+  "L15B7": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.5L i-VTEC DOHC timing chain."
+  },
+  "F22B6": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "90,000 miles or 6 years",
+    "notes": "2.2L VTEC timing belt system."
+  },
+  "J35A4": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.5L V6 VTEC timing belt."
+  },
+  "J35A7": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.5L V6 VTEC timing belt."
+  },
+  "J35Z4": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.5L V6 VTEC timing belt."
+  },
+  "J35Y6": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.5L V6 VTEC timing belt system."
+  },
+  "J35A5": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.5L V6 VTEC timing belt."
+  },
+  "J35A9": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "105,000 miles or 7 years",
+    "notes": "3.5L V6 VTEC timing belt."
+  },
+  "G4FA": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.6L/2.0L GDI timing chain system."
+  },
+  "G4FG": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.8L/2.4L GDI timing chain."
+  },
+  "G4LC": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.6L/2.0L GDI timing chain."
+  },
+  "G4JS": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "2.4L DOHC timing belt."
+  },
+  "G6BA": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "2.7L V6 DOHC timing belt."
+  },
+  "G4KC": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "2.4L DOHC timing belt."
+  },
+  "G6DB": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.7L/3.8L V6 GDI timing chain."
+  },
+  "G4KD": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.0L Turbo GDI timing chain."
+  },
+  "G4KA": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L GDI timing chain system."
+  },
+  "G4KJ": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.6L/2.0L Turbo GDI timing chain."
+  },
+  "A5D": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "1.5L SOHC timing belt."
+  },
+  "A6D": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "1.6L DOHC timing belt."
+  },
+  "G4ED": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "1.6L DOHC timing belt."
+  },
+  "G6EA": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "3.3L/3.5L V6 DOHC timing belt."
+  },
+  "G6CU": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "3.8L V6 DOHC timing chain."
+  },
+  "G4KE": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.4L GDI timing chain."
+  },
+  "G6DH": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "3.3L V6 GDI/Twin Turbo timing chain."
+  },
+  "G4FD": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "2.0L GDI timing chain."
+  },
+  "FE": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "2.0L DOHC timing belt."
+  },
+  "G4GC": {
+    "timing": "Timing Belt",
+    "interference": true,
+    "interval": "60,000 miles or 4 years",
+    "notes": "2.0L DOHC timing belt."
+  },
+  "G4FJ": {
+    "timing": "Timing Chain",
+    "interference": true,
+    "interval": "Lifetime service",
+    "notes": "1.6L Turbo GDI timing chain."
+  }
+}
