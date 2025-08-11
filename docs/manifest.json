@@ -8,8 +8,8 @@
   "theme_color": "#667eea",
   "icons": [
     {
-      "src": "icon.svg",
-      "sizes": "any",
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGZpbGw9IiNjZjcyMjFiIiByeD0iMjkiLz48Y2lyY2xlIGN4PSIyODEiIGN5PSIyODEiIHI9IjE3NSIgZmlsbD0iIzY0N2VlYSIvPjxwYXRoIGQ9Ik00NTIgMjAwbDI0OCAzMzktMi42IDcgODYgMTYtMTY3IDQwMSwtfDE1IDYuNiBNMTQ0IDgyIDExN0sxNzp0MTNxIjBaInN2Zy04I2J0QgcKrIi5sy5kZXcvbXWQegR2ZyAuczgBmoNNGdXVXkiIGZpbGw9IiNmMSeke8ZGQiLz48c3ZnSw==",
+      "sizes": "512x512",
       "type": "image/svg+xml"
     }
   ]
