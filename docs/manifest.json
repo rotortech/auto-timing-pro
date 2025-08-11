@@ -1,16 +1,107 @@
 {
   "name": "Auto Timing Pro",
-  "short_name": "TimingPro",
-  "description": "Professional timing belt/chain diagnostic tool",
-  "start_url": "./",
+  "short_name": "Timing Pro",
+  "description": "Professional timing belt and chain service intervals for mobile mechanics",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#2c3e50",
-  "theme_color": "#667eea",
+  "background_color": "#667eea",
+  "theme_color": "#1a365d",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["automotive", "utilities", "productivity"],
   "icons": [
     {
-      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGZpbGw9IiNjZjcyMjFiIiByeD0iMjkiLz48Y2lyY2xlIGN4PSIyODEiIGN5PSIyODEiIHI9IjE3NSIgZmlsbD0iIzY0N2VlYSIvPjxwYXRoIGQ9Ik00NTIgMjAwbDI0OCAzMzktMi42IDcgODYgMTYtMTY3IDQwMSwtfDE1IDYuNiBNMTQ0IDgyIDExN0sxNzp0MTNxIjBaInN2Zy04I2J0QgcKrIi5sy5kZXcvbXWQegR2ZyAuczgBmoNNGdXVXkiIGZpbGw9IiNmMSeke8ZGQiLz48c3ZnSw==",
+      "src": "icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Quick Lookup",
+      "short_name": "Lookup",
+      "description": "Quick timing service lookup",
+      "url": "/",
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Admin Panel",
+      "short_name": "Admin",
+      "description": "Manage vehicle database",
+      "url": "/?admin=true",
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Auto Timing Pro main interface"
+    },
+    {
+      "src": "screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Auto Timing Pro mobile view"
     }
   ]
 }
